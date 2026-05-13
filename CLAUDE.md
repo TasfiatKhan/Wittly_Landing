@@ -45,6 +45,49 @@ Each option includes the response text and a brief delivery note.
 ### Context Quality Principle
 The more context the user provides, the better and more personalized the output. The app should actively encourage users to provide rich situational context — who they're talking to, what the relationship is, what the vibe is, what they want to achieve. **Thin context produces generic responses. Rich context produces responses that feel like they were written specifically for that moment.** This principle should inform UX copy, input placeholders, and onboarding guidance throughout the app.
 
+## Landing Page — witly_landing/
+
+Separate repo: `https://github.com/TasfiatKhan/Wittly_Landing`
+
+### Stack
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 15 App Router |
+| Styling | Tailwind CSS v3 + CSS custom properties |
+| Animations | Framer Motion 11 |
+| Language | TypeScript |
+| Fonts | Lora (serif headings) + DM Sans (body) via next/font/google |
+
+### Design System
+- **Palette (CSS vars):** `--bg #0F0E0C`, `--surface #232018`, `--accent #C4956A`, `--text #F0EBE3`, `--safe #5A8F6B`, `--playful #7B6FA8`, `--bold #B85C4A`
+- **Noise texture:** `body::before` SVG fractalNoise overlay
+- **Animations:** Framer Motion for phone float (`y: [0,-12,0]`, `rotate: -1`) and floating badges; pure CSS `@keyframes ticker` for the social proof strip
+
+### Page Sections (top → bottom)
+1. **Navbar** — fixed, scroll-aware, backdrop blur, mobile CTA
+2. **Hero** — serif headline, trust items, phone mockup with chat bubbles + two floating badges
+3. **Ticker** — scrolling social proof strip (CSS animation, items duplicated for seamless loop)
+4. **Problem** — "Some conversations are hard" + anxiety spiral card visual
+5. **Modes** — three cards (Texting / Live / Moments) with use-case dot lists
+6. **Scenarios** — interactive 3-tab selector with sticky response display panel
+7. **Differentiators** — 4-column features grid
+8. **Testimonials** — 3 testimonial cards (Mara, Theo, Priya)
+9. **Waitlist CTA** — bordered card with gradient top line, email capture form
+10. **Footer** — 4-column grid
+
+### Key Files
+- `src/app/globals.css` — CSS vars, noise texture, `@keyframes ticker`
+- `src/app/layout.tsx` — fonts, full OG/Twitter metadata
+- `src/components/ui/PhoneMockup.tsx` — animated phone with chat thread + AI suggestion cards
+- `src/components/sections/ScenarioSection.tsx` — interactive tabs with React state
+- `src/components/sections/WaitlistSection.tsx` — email form with success state (TODO: wire to email service)
+- `src/components/ui/AnimatedSection.tsx` — scroll-triggered Framer Motion wrapper
+
+### Waitlist Integration
+`WaitlistSection.tsx` has a `// TODO: wire to your email service` comment replacing a `setTimeout` mock. Connect to Mailchimp / ConvertKit / Loops when ready.
+
+---
+
 ## Current Status (as of 2026-05-11)
 All Phase 1 + Phase 1.5 features complete and pushed. UX refinement phase underway. Full stack working end-to-end.
 
@@ -187,4 +230,5 @@ Apps live under `apps/` and are registered as `apps.users`, `apps.profiles`, `ap
 - **2026-05-12** — Empty transcription UX. Live Mode: error message updated to "No speech detected. Tap and speak, tap again when done." Recording status label while pulsating changed from "Tap to stop" → "Tap to finish". Moments continuation: empty transcription no longer returns 400 — instead creates a coaching exchange (user message "(no speech captured)" + assistant coaching card "Tap to speak clearly and in detail."), counts toward the 19-exchange cap, skips AI call. Frontend renders coaching exchanges with a plain `coachingCard` style (no option pills, no feedback row).
 - **2026-05-12** — Dark/light theme toggle. `theme.ts`: added `darkColors` (dark grays, same accent/option colors) and `AppColors` type; `lightColors` is the existing palette. `ThemeContext.tsx`: React context providing `colors`, `isDark`, `toggleTheme`; preference persisted to SecureStore. `App.tsx` wrapped with `ThemeProvider`. All 9 screens: removed static `colors` import, added `useTheme()`, moved `StyleSheet.create` into `useMemo([colors])`, added `placeholderTextColor` + explicit `color` to all TextInputs. HomeScreen: toggle button (track+thumb pill) added to header row beside avatar — slides right and turns accent-colored in dark mode.
 - **2026-05-12** — Live Mode full redesign. Dark-themed layout (`#1A1A1A` background, `#242424` card surface). All input fields removed — Live Mode is now record-only. Instruction text ("Provide as much context as possible...") positioned absolutely at the vertical center of the screen, independent of the bottom bar so it stays put regardless of button placement. Record button pushed up toward thumb zone (`paddingBottom: spacing.xxl * 3`). Response cards scroll above the button (`paddingTop: spacing.xxl * 3`). Recording pulse animation drives scale (1→1.28) and opacity (1→0.55) simultaneously — button never changes color. `relationship_context` made optional in `LiveVoiceRequestSerializer` (default `'other'`); relationship context is now inferred from the voice input itself rather than requiring UI chips.
+- **2026-05-13** — Landing page built and pushed to `https://github.com/TasfiatKhan/Wittly_Landing`. Next.js 15 + Tailwind CSS + Framer Motion. Dark theme matching `witly-landing.html` reference. Sections: hero with animated phone mockup + floating badges, social proof ticker, problem/anxiety card, three-mode cards, interactive scenario tabs, 4-col features grid, testimonials, waitlist CTA card. Three animation fixes applied: Framer Motion for phone float and badges, CSS keyframe for ticker strip.
 - **2026-05-06** — Major context expansion and framing overhaul. `social_anxiety_level` (none/mild/moderate/high, default mild) added to `UserProfile` — migration pending (`0005`). Non-prescriptive language rule embedded as permanent product philosophy and enforced in `system_personality.txt`: all `note` and `delivery` fields must use suggestion framing, never commands. `relationship_context` (stranger/new_acquaintance/crush/friend/close_friend/colleague/date/other) and `relationship_other` (free text, used when other is selected) and `environment` (optional free text) added to both `TextingRequestSerializer` and `LiveRequestSerializer`. `AIService._resolve_relationship()` substitutes `relationship_other` into the prompt when context is "other". All three v2 prompt templates updated: `system_personality.txt` gets `{social_anxiety_level}` and non-prescriptive framing rules; `texting_mode.txt` and `live_mode.txt` get `{relationship_context}` and `{environment}`. Frontend input fields for new request fields are pending next session.
