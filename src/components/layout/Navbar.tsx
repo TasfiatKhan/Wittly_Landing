@@ -1,0 +1,97 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  return (
+    <motion.nav
+      initial={{ opacity: 0, y: -12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      role="navigation"
+      aria-label="Main navigation"
+      style={{
+        position: 'fixed',
+        top: 0, left: 0, right: 0,
+        zIndex: 100,
+        padding: '20px 0',
+        transition: 'background 0.4s, backdrop-filter 0.4s, border-color 0.4s',
+        background: scrolled ? 'rgba(15,14,12,0.88)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(18px)' : 'none',
+        borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
+      }}
+    >
+      <div className="container-witly">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          {/* Logo */}
+          <a href="#" aria-label="Witly home" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <div style={{
+              width: 34, height: 34,
+              background: 'var(--accent)',
+              borderRadius: 9,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontFamily: 'var(--font-serif)',
+              fontWeight: 600, fontSize: 17,
+              color: '#1A1510',
+              letterSpacing: '-0.5px',
+            }} aria-hidden="true">W</div>
+            <span style={{ fontFamily: 'var(--font-serif)', fontSize: 20, fontWeight: 500, color: 'var(--text)', letterSpacing: '-0.3px' }}>
+              Witly
+            </span>
+          </a>
+
+          {/* Desktop nav links */}
+          <ul style={{ display: 'flex', gap: 36, listStyle: 'none', margin: 0, padding: 0 }} className="hidden md:flex">
+            {[
+              { label: 'How it works', href: '#how-it-works' },
+              { label: 'Modes', href: '#modes' },
+              { label: 'Stories', href: '#stories' },
+              { label: 'Early Access', href: '#waitlist' },
+            ].map((link) => (
+              <li key={link.href}>
+                <a href={link.href} style={{ fontSize: 14, color: 'var(--text2)', fontWeight: 400, transition: 'color 0.2s' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'var(--text2)')}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Desktop CTA */}
+          <a href="#waitlist" className="hidden md:block" style={{
+            background: 'var(--accent)', color: '#1A1510',
+            fontSize: 14, fontWeight: 500,
+            padding: '9px 22px', borderRadius: 100,
+            transition: 'background 0.2s, transform 0.2s',
+          }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent2)'; e.currentTarget.style.transform = 'translateY(-1px)' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.transform = 'translateY(0)' }}
+          >
+            Get Early Access
+          </a>
+
+          {/* Mobile CTA */}
+          <a href="#waitlist" className="md:hidden" style={{
+            background: 'var(--surface)', color: 'var(--accent)',
+            border: '1px solid var(--border)',
+            fontSize: 13, fontWeight: 500,
+            padding: '8px 18px', borderRadius: 100,
+          }}>
+            Join waitlist
+          </a>
+        </div>
+      </div>
+    </motion.nav>
+  )
+}

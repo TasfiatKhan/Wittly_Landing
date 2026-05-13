@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Witly — Social Intelligence, Made Natural</title>
+  <meta name="description" content="Witly helps you navigate real conversations with more ease, confidence, and warmth. AI-powered social intelligence for texting, live moments, and ongoing relationships." />
+  <meta property="og:title" content="Witly — Social Intelligence, Made Natural" />
+  <meta property="og:description" content="An AI social copilot that helps you feel more comfortable, natural, and confident in every conversation." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0F0E0C;
+      --bg2:       #151410;
+      --bg3:       #1C1A16;
+      --surface:   #232018;
+      --surface2:  #2B2720;
+      --border:    rgba(196,149,106,0.12);
+      --accent:    #C4956A;
+      --accent2:   #D4A574;
+      --gold:      #E8C97A;
+      --text:      #F0EBE3;
+      --text2:     #B8AFA4;
+      --text3:     #7A7168;
+      --safe:      #5A8F6B;
+      --playful:   #7B6FA8;
+      --bold:      #B85C4A;
+      --radius-sm: 10px;
+      --radius:    16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --font-serif: 'Lora', Georgia, serif;
+      --font-sans:  'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.4;
+    }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── FADE-IN ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.72s cubic-bezier(.22,1,.36,1), transform 0.72s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.18s; }
+    .reveal-delay-3 { transition-delay: 0.28s; }
+    .reveal-delay-4 { transition-delay: 0.38s; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(15,14,12,0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-mark {
+      width: 34px; height: 34px;
+      background: var(--accent);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 17px;
+      color: #1A1510;
+      letter-spacing: -0.5px;
+    }
+    .logo-name {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      color: var(--text2);
+      transition: color 0.2s;
+      font-weight: 400;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent);
+      color: #1A1510;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 9px 22px;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent2); transform: translateY(-1px); }
+    .nav-mobile-cta { display: none; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-mobile-cta {
+        display: block;
+        background: var(--surface);
+        color: var(--accent);
+        border: 1px solid var(--border);
+        font-size: 13px;
+        font-weight: 500;
+        padding: 8px 18px;
+        border-radius: 100px;
+      }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 900px; height: 600px;
+      background: radial-gradient(ellipse at center, rgba(196,149,106,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-glow-2 {
+      position: absolute;
+      bottom: -100px; right: -200px;
+      width: 500px; height: 400px;
+      background: radial-gradient(ellipse at center, rgba(123,111,168,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(196,149,106,0.1);
+      border: 1px solid rgba(196,149,106,0.2);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(38px, 5vw, 60px);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -1px;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-subhead {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text2);
+      margin-bottom: 44px;
+      max-width: 480px;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #1A1510;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 14px 28px;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(196,149,106,0.2);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(196,149,106,0.3);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text2);
+      font-size: 15px;
+      font-weight: 400;
+      padding: 14px 24px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      transition: color 0.2s, border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .btn-secondary:hover {
+      color: var(--text);
+      border-color: rgba(196,149,106,0.3);
+      transform: translateY(-1px);
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .hero-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      color: var(--text3);
+    }
+    .hero-trust-item svg { flex-shrink: 0; }
+
+    /* ── PHONE MOCKUP ── */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .phone-frame {
+      width: 280px;
+      background: var(--surface);
+      border-radius: 40px;
+      border: 1px solid var(--border);
+      box-shadow:
+        0 0 0 6px rgba(255,255,255,0.03),
+        0 40px 80px rgba(0,0,0,0.5),
+        0 8px 24px rgba(196,149,106,0.06);
+      overflow: hidden;
+      position: relative;
+      animation: float 5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(-1deg); }
+      50% { transform: translateY(-12px) rotate(-1deg); }
+    }
+
+    .phone-notch {
+      width: 80px; height: 24px;
+      background: var(--bg);
+      border-radius: 0 0 16px 16px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .phone-screen {
+      padding: 0 16px 24px;
+      min-height: 520px;
+      background: var(--bg2);
+    }
+    .phone-header {
+      padding: 14px 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .phone-mode-badge {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      background: rgba(196,149,106,0.12);
+      padding: 4px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.05em;
+    }
+    .phone-time {
+      font-size: 11px;
+      color: var(--text3);
+    }
+
+    .chat-bubble {
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+    .chat-bubble.them { align-items: flex-start; }
+    .chat-bubble.me { align-items: flex-end; }
+
+    .bubble {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 18px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .bubble.them {
+      background: var(--surface2);
+      color: var(--text);
+      border-bottom-left-radius: 4px;
+    }
+    .bubble.me {
+      background: var(--accent);
+      color: #1A1510;
+      border-bottom-right-radius: 4px;
+      font-weight: 500;
+    }
+    .bubble-time {
+      font-size: 10px;
+      color: var(--text3);
+      margin-top: 3px;
+      padding: 0 4px;
+    }
+
+    .phone-ai-card {
+      margin-top: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .phone-ai-label {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .phone-suggestion {
+      background: var(--bg3);
+      border-radius: 10px;
+      padding: 9px 11px;
+      font-size: 12px;
+      color: var(--text);
+      margin-bottom: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+    }
+    .phone-suggestion:hover { background: var(--surface2); }
+    .suggestion-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .dot-safe { background: var(--safe); }
+    .dot-playful { background: var(--playful); }
+    .dot-bold { background: var(--bold); }
+
+    /* floating badges */
+    .floating-badge {
+      position: absolute;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      animation: float-badge 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .floating-badge-left {
+      left: -80px;
+      top: 30%;
+      animation-delay: 1s;
+    }
+    .floating-badge-right {
+      right: -70px;
+      top: 55%;
+    }
+    @keyframes float-badge {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .badge-emoji { font-size: 16px; margin-bottom: 2px; }
+    .badge-label { color: var(--text3); font-size: 10px; }
+    .badge-value { color: var(--text); font-weight: 500; }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 60px; }
+      .hero-visual { order: -1; }
+      .floating-badge-left, .floating-badge-right { display: none; }
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 100px 0; }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .section-lead {
+      font-size: 17px;
+      color: var(--text2);
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 560px;
+    }
+
+    /* ── SOCIAL PROOF TICKER ── */
+    .ticker-section {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 48px;
+      animation: ticker 28s linear infinite;
+      width: max-content;
+    }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text3);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .ticker-star {
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+    .ticker-name { font-weight: 500; color: var(--text2); }
+
+    /* ── PROBLEM ── */
+    .problem-section {
+      padding: 100px 0;
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .problem-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 36px;
+    }
+    .problem-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color 0.2s;
+    }
+    .problem-item:hover { border-color: rgba(196,149,106,0.25); }
+    .problem-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .problem-text h4 {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+    .problem-text p {
+      font-size: 13px;
+      color: var(--text3);
+      line-height: 1.5;
+    }
+
+    .problem-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .anxiety-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      width: 320px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .anxiety-header {
+      font-size: 12px;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+    .thought-bubble {
+      background: var(--bg3);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-style: italic;
+      color: var(--text2);
+      margin-bottom: 10px;
+      line-height: 1.6;
+      border-left: 3px solid var(--border);
+      position: relative;
+    }
+    .thought-bubble.faded { opacity: 0.45; }
+
+    @media (max-width: 768px) {
+      .problem-grid { grid-template-columns: 1fr; }
+      .problem-visual { display: none; }
+    }
+
+    /* ── MODES ── */
+    .modes-section { padding: 100px 0; }
+    .modes-header { text-align: center; margin-bottom: 64px; }
+    .modes-header .section-lead { margin: 0 auto; }
+
+    .modes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .mode-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+    .mode-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      transition: opacity 0.3s;
+      opacity: 0;
+    }
+    .mode-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    }
+
+    .mode-card.texting::before { background: linear-gradient(90deg, var(--safe), transparent); }
+    .mode-card.live::before { background: linear-gradient(90deg, var(--bold), transparent); }
+    .mode-card.moments::before { background: linear-gradient(90deg, var(--playful), transparent); }
+
+    .mode-card.texting:hover { border-color: rgba(90,143,107,0.35); }
+    .mode-card.live:hover { border-color: rgba(184,92,74,0.35); }
+    .mode-card.moments:hover { border-color: rgba(123,111,168,0.35); }
+
+    .mode-card:hover::before { opacity: 1; }
+
+    .mode-icon-wrap {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+    .mode-icon-wrap.texting { background: rgba(90,143,107,0.12); }
+    .mode-icon-wrap.live { background: rgba(184,92,74,0.12); }
+    .mode-icon-wrap.moments { background: rgba(123,111,168,0.12); }
+
+    .mode-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+    .mode-badge.texting { color: var(--safe); background: rgba(90,143,107,0.12); }
+    .mode-badge.live { color: var(--bold); background: rgba(184,92,74,0.12); }
+    .mode-badge.moments { color: var(--playful); background: rgba(123,111,168,0.12); }
+
+    .mode-card h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .mode-card p {
+      font-size: 14px;
+      color: var(--text2);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+
+    .mode-use-cases {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .mode-use-case {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text3);
+    }
+    .mode-use-case-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .texting .mode-use-case-dot { background: var(--safe); }
+    .live .mode-use-case-dot { background: var(--bold); }
+    .moments .mode-use-case-dot { background: var(--playful); }
+
+    @media (max-width: 900px) {
+      .modes-grid { grid-template-columns: 1fr; gap: 16px; }
+      .mode-card { padding: 28px 24px; }
+    }
+
+    /* ── SCENARIOS ── */
+    .scenarios-section { padding: 100px 0; }
+    .scenarios-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .scenario-tabs {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .scenario-tab {
+      padding: 18px 22px;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .scenario-tab:hover {
+      background: var(--surface);
+      border-color: var(--border);
+    }
+    .scenario-tab.active {
+      background: var(--surface);
+      border-color: rgba(196,149,106,0.25);
+    }
+    .scenario-tab-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .scenario-tab-emoji { font-size: 18px; }
+    .scenario-tab-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .scenario-tab-desc {
+      font-size: 13px;
+      color: var(--text3);
+      line-height: 1.5;
+    }
+
+    .scenario-display {
+      position: sticky;
+      top: 100px;
+    }
+
+    .scenario-phone {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 24px 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .scenario-context {
+      font-size: 11px;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .scenario-content { display: none; }
+    .scenario-content.active { display: block; }
+
+    .scenario-situation {
+      background: var(--bg3);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      border-left: 2px solid var(--accent);
+    }
+    .scenario-situation-label {
+      font-size: 10px;
+      color: var(--accent);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .scenario-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .scenario-option {
+      display: flex;
+      gap: 10px;
+      background: var(--bg3);
+      border-radius: 10px;
+      padding: 11px 13px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .scenario-option:hover { background: rgba(196,149,106,0.06); }
+    .scenario-option-color {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .scenario-option-text {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .scenario-option-type {
+      font-size: 10px;
+      color: var(--text3);
+      margin-top: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .scenarios-inner { grid-template-columns: 1fr; gap: 40px; }
+      .scenario-display { position: static; }
+    }
+
+    /* ── FEATURES STRIP ── */
+    .features-section { padding: 80px 0; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .feature-item {
+      padding: 28px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .feature-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(196,149,106,0.2);
+    }
+    .feature-emoji { font-size: 26px; margin-bottom: 14px; display: block; }
+    .feature-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .feature-desc {
+      font-size: 13px;
+      color: var(--text3);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .features-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { padding: 100px 0; }
+    .testimonials-header { text-align: center; margin-bottom: 56px; }
+    .testimonials-header .section-lead { margin: 0 auto; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .testimonial-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(196,149,106,0.2);
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+    }
+    .testimonial-star { color: var(--gold); font-size: 13px; }
+
+    .testimonial-quote {
+      font-size: 14px;
+      color: var(--text2);
+      line-height: 1.7;
+      font-style: italic;
+      font-weight: 300;
+      flex: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+    .testimonial-avatar {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .testimonial-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .testimonial-handle {
+      font-size: 12px;
+      color: var(--text3);
+    }
+
+    @media (max-width: 900px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-glow {
+      position: absolute;
+      bottom: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 500px;
+      background: radial-gradient(ellipse at center, rgba(196,149,106,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 72px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0.4;
+    }
+
+    .cta-title {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+    }
+    .cta-title em { color: var(--accent); font-style: italic; }
+
+    .cta-subtitle {
+      font-size: 17px;
+      color: var(--text2);
+      margin-bottom: 44px;
+      font-weight: 300;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .waitlist-form {
+      display: flex;
+      gap: 10px;
+      max-width: 440px;
+      margin: 0 auto 20px;
+    }
+    .waitlist-input {
+      flex: 1;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 13px 20px;
+      font-size: 14px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: var(--font-sans);
+    }
+    .waitlist-input::placeholder { color: var(--text3); }
+    .waitlist-input:focus { border-color: rgba(196,149,106,0.4); }
+
+    .waitlist-btn {
+      background: var(--accent);
+      color: #1A1510;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 13px 24px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .waitlist-btn:hover { background: var(--accent2); transform: translateY(-1px); }
+
+    .waitlist-note {
+      font-size: 12px;
+      color: var(--text3);
+    }
+
+    @media (max-width: 600px) {
+      .waitlist-form { flex-direction: column; }
+      .cta-card { padding: 48px 24px; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 60px 0 40px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand p {
+      font-size: 13px;
+      color: var(--text3);
+      line-height: 1.7;
+      margin-top: 14px;
+      max-width: 240px;
+    }
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text3);
+      margin-bottom: 16px;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 14px;
+      color: var(--text2);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-copy { font-size: 13px; color: var(--text3); }
+    .footer-tagline {
+      font-size: 13px;
+      color: var(--text3);
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 24px;
+    }
+
+    /* ── SUCCESS STATE ── */
+    .waitlist-success {
+      display: none;
+      text-align: center;
+      padding: 16px 24px;
+      background: rgba(90,143,107,0.1);
+      border: 1px solid rgba(90,143,107,0.25);
+      border-radius: 100px;
+      font-size: 14px;
+      color: var(--safe);
+      max-width: 440px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav id="main-nav" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="Witly home">
+        <div class="logo-mark" aria-hidden="true">W</div>
+        <span class="logo-name">Witly</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#modes">Modes</a></li>
+        <li><a href="#stories">Stories</a></li>
+        <li><a href="#waitlist">Early Access</a></li>
+      </ul>
+      <a href="#waitlist" class="nav-cta">Get Early Access</a>
+      <a href="#waitlist" class="nav-mobile-cta">Join waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<main>
+<section class="hero" aria-label="Hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-glow-2" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow reveal">
+          <span class="hero-eyebrow-dot" aria-hidden="true"></span>
+          Now in Early Access
+        </div>
+        <h1 class="hero-headline reveal reveal-delay-1">
+          Say the thing you<br>
+          actually <em>meant</em> to say.
+        </h1>
+        <p class="hero-subhead reveal reveal-delay-2">
+          Witly is your AI social copilot — helping you navigate conversations with more ease, warmth, and confidence. Texting, in-person, ongoing. Whatever the moment calls for.
+        </p>
+        <div class="hero-actions reveal reveal-delay-3">
+          <a href="#waitlist" class="btn-primary">
+            <span>Get Early Access</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#modes" class="btn-secondary">
+            <span>See how it works</span>
+          </a>
+        </div>
+        <div class="hero-trust reveal reveal-delay-4">
+          <div class="hero-trust-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M12 4L5.5 10.5 2 7" stroke="#5A8F6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>No pickup-line energy</span>
+          </div>
+          <div class="hero-trust-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M12 4L5.5 10.5 2 7" stroke="#5A8F6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Context-aware, not scripted</span>
+          </div>
+          <div class="hero-trust-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M12 4L5.5 10.5 2 7" stroke="#5A8F6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Sounds like you</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHONE MOCKUP -->
+      <div class="hero-visual reveal reveal-delay-2">
+        <div style="position: relative;">
+          <div class="phone-frame" role="img" aria-label="Witly app showing conversation suggestions">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="phone-header">
+                <span class="phone-mode-badge">Texting Mode</span>
+                <span class="phone-time">Now</span>
+              </div>
+
+              <div class="chat-bubble them">
+                <div class="bubble them">so we're all going to Jake's thing Saturday, you should come</div>
+                <span class="bubble-time">Jordan, 2 min ago</span>
+              </div>
+
+              <div class="chat-bubble me">
+                <div class="bubble me">might be down — who else is going?</div>
+                <span class="bubble-time">You</span>
+              </div>
+
+              <div class="chat-bubble them">
+                <div class="bubble them">the usual crowd, maybe some of his coworkers too. should be chill</div>
+              </div>
+
+              <div class="phone-ai-card" aria-label="Witly suggestions">
+                <div class="phone-ai-label">Witly suggests</div>
+                <div class="phone-suggestion" role="button" tabindex="0">
+                  <span class="suggestion-dot dot-safe" aria-hidden="true"></span>
+                  <span>honestly sounds like a good time — I'll come</span>
+                </div>
+                <div class="phone-suggestion" role="button" tabindex="0">
+                  <span class="suggestion-dot dot-playful" aria-hidden="true"></span>
+                  <span>sold if there's actual food and not just lukewarm drinks</span>
+                </div>
+                <div class="phone-suggestion" role="button" tabindex="0">
+                  <span class="suggestion-dot dot-bold" aria-hidden="true"></span>
+                  <span>already said no to two things this month, I'm contractually obligated to come</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-badge floating-badge-left" aria-hidden="true">
+            <div class="badge-emoji">💬</div>
+            <div class="badge-label">Tone</div>
+            <div class="badge-value">Warm & casual</div>
+          </div>
+
+          <div class="floating-badge floating-badge-right" aria-hidden="true">
+            <div class="badge-emoji">✓</div>
+            <div class="badge-label">Cringe level</div>
+            <div class="badge-value">None detected</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TICKER ── -->
+<div class="ticker-section" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ticker-item"><span class="ticker-star">★★★★★</span><span class="ticker-name">@mara.w</span> — "felt like me again in group chats"</div>
+    <div class="ticker-item"><span class="ticker-star">★★★★★</span><span class="ticker-name">@theo_r</span> — "actually used it at a work happy hour"</div>
+    <div class="ticker-item"><span class="ticker-star">★★★★★</span><span class="ticker-name">@priyak</span> — "way less overthinking before I hit send"</div>
+    <div class="ticker-item"><span class="ticker-star">★★★★★</span><span class="ticker-name">@danielj</span> — "the suggestions never sound like an AI wrote them"</div>
+    <div class="ticker-item"><span class="ticker-star">★★★★★</span><span class="ticker-name">@sof.m</span> — "helped me get through an awkward dinner"</div>
+    <div class="ticker-item"><span class="ticker-star">★★★★★</span><span class="ticker-name">@lukasz</span> — "I'm using it for networking events now"</div>
+    <!-- duplicate for seamless loop -->
+    <div class="ticker-item"><span class="ticker-star">★★★★★</span><span class="ticker-name">@mara.w</span> — "felt like me again in group chats"</div>
+    <div class="ticker-item"><span class="ticker-star">★★★★★</span><span class="ticker-name">@theo_r</span> — "actually used it at a work happy hour"</div>
+    <div class="ticker-item"><span class="ticker-star">★★★★★</span><span class="ticker-name">@priyak</span> — "way less overthinking before I hit send"</div>
+    <div class="ticker-item"><span class="ticker-star">★★★★★</span><span class="ticker-name">@danielj</span> — "the suggestions never sound like an AI wrote them"</div>
+    <div class="ticker-item"><span class="ticker-star">★★★★★</span><span class="ticker-name">@sof.m</span> — "helped me get through an awkward dinner"</div>
+    <div class="ticker-item"><span class="ticker-star">★★★★★</span><span class="ticker-name">@lukasz</span> — "I'm using it for networking events now"</div>
+  </div>
+</div>
+
+<!-- ── PROBLEM ── -->
+<section class="problem-section" id="how-it-works" aria-labelledby="problem-heading">
+  <div class="container">
+    <div class="problem-grid">
+      <div>
+        <p class="section-eyebrow reveal">Why Witly</p>
+        <h2 class="section-title reveal reveal-delay-1" id="problem-heading">
+          Some conversations are just <em>hard.</em>
+        </h2>
+        <p class="section-lead reveal reveal-delay-2">
+          The overthinking, the re-reads, the three drafts you deleted. Most of us navigate social situations more anxiously than we let on. Witly doesn't replace your voice — it helps you find it.
+        </p>
+
+        <ul class="problem-list" aria-label="Situations Witly helps with">
+          <li class="problem-item reveal reveal-delay-2">
+            <span class="problem-icon" aria-hidden="true">💬</span>
+            <div class="problem-text">
+              <h4>You know what you feel, not what to say</h4>
+              <p>The thought is clear. The words aren't. Witly helps you translate the feeling into something you'd actually send.</p>
+            </div>
+          </li>
+          <li class="problem-item reveal reveal-delay-3">
+            <span class="problem-icon" aria-hidden="true">🪞</span>
+            <div class="problem-text">
+              <h4>You replay it in your head for hours</h4>
+              <p>After the awkward moment at the party. After the weird silence with your coworker. Witly helps you move through it, not stew in it.</p>
+            </div>
+          </li>
+          <li class="problem-item reveal reveal-delay-4">
+            <span class="problem-icon" aria-hidden="true">🧩</span>
+            <div class="problem-text">
+              <h4>You're funny — just not always in the moment</h4>
+              <p>The best comeback arrives at midnight. Witly brings it to you when it actually counts.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="problem-visual" aria-hidden="true">
+        <div class="anxiety-card">
+          <div class="anxiety-header">The spiral — before Witly</div>
+          <div class="thought-bubble">"wait did that come across weird"</div>
+          <div class="thought-bubble">"should I send a follow-up or does that make it worse"</div>
+          <div class="thought-bubble faded">"why am I like this"</div>
+          <div class="thought-bubble faded">"okay new plan: never text anyone again"</div>
+          <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border);">
+            <div style="font-size: 12px; color: var(--text3); margin-bottom: 10px;">After Witly</div>
+            <div style="background: rgba(90,143,107,0.08); border: 1px solid rgba(90,143,107,0.2); border-radius: 10px; padding: 12px 14px; font-size: 13px; color: #7BBF8A;">
+              You picked the warm option. It landed. ✓
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── THREE MODES ── -->
+<section class="modes-section" id="modes" aria-labelledby="modes-heading">
+  <div class="container">
+    <div class="modes-header">
+      <p class="section-eyebrow reveal">Three modes</p>
+      <h2 class="section-title reveal reveal-delay-1" id="modes-heading">
+        Built for every kind of moment
+      </h2>
+      <p class="section-lead reveal reveal-delay-2">
+        Social life doesn't fit into one box. Witly has three distinct modes, each designed for where you actually are.
+      </p>
+    </div>
+
+    <div class="modes-grid" role="list">
+
+      <article class="mode-card texting reveal reveal-delay-1" role="listitem">
+        <div class="mode-icon-wrap texting" aria-hidden="true">💬</div>
+        <span class="mode-badge texting">Texting Mode</span>
+        <h3>Quick, thoughtful replies</h3>
+        <p>Drop in a screenshot or describe the situation. Get three options back — each with a different energy. You pick what feels right, copy, send.</p>
+        <ul class="mode-use-cases" aria-label="Use cases">
+          <li class="mode-use-case"><span class="mode-use-case-dot" aria-hidden="true"></span>The text you've been staring at for 20 minutes</li>
+          <li class="mode-use-case"><span class="mode-use-case-dot" aria-hidden="true"></span>A weird message from a coworker</li>
+          <li class="mode-use-case"><span class="mode-use-case-dot" aria-hidden="true"></span>Early stage of dating someone new</li>
+          <li class="mode-use-case"><span class="mode-use-case-dot" aria-hidden="true"></span>Group chat you can't read the vibe on</li>
+        </ul>
+      </article>
+
+      <article class="mode-card live reveal reveal-delay-2" role="listitem">
+        <div class="mode-icon-wrap live" aria-hidden="true">🎙️</div>
+        <span class="mode-badge live">Live Mode</span>
+        <h3>Real-time support</h3>
+        <p>Tap once, speak your situation. In seconds, you have something glanceable — a line, a redirect, a way out of the awkward corner you've backed into.</p>
+        <ul class="mode-use-cases" aria-label="Use cases">
+          <li class="mode-use-case"><span class="mode-use-case-dot" aria-hidden="true"></span>A party where you know no one</li>
+          <li class="mode-use-case"><span class="mode-use-case-dot" aria-hidden="true"></span>An awkward silence you need to fill</li>
+          <li class="mode-use-case"><span class="mode-use-case-dot" aria-hidden="true"></span>Networking event, stuck mid-pitch</li>
+          <li class="mode-use-case"><span class="mode-use-case-dot" aria-hidden="true"></span>First date lull you want to recover</li>
+        </ul>
+      </article>
+
+      <article class="mode-card moments reveal reveal-delay-3" role="listitem">
+        <div class="mode-icon-wrap moments" aria-hidden="true">🌿</div>
+        <span class="mode-badge moments">Moments</span>
+        <h3>Ongoing context, no re-explaining</h3>
+        <p>For the situations that keep unfolding. Witly remembers the history, the person, the tone you've been setting — and helps you continue naturally, not from scratch.</p>
+        <ul class="mode-use-cases" aria-label="Use cases">
+          <li class="mode-use-case"><span class="mode-use-case-dot" aria-hidden="true"></span>A new friendship you're still calibrating</li>
+          <li class="mode-use-case"><span class="mode-use-case-dot" aria-hidden="true"></span>Slow-burn conversation with someone you like</li>
+          <li class="mode-use-case"><span class="mode-use-case-dot" aria-hidden="true"></span>Reconnecting with someone after a long silence</li>
+          <li class="mode-use-case"><span class="mode-use-case-dot" aria-hidden="true"></span>A tricky dynamic with a friend group</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── SCENARIO DEMO ── -->
+<section class="scenarios-section" id="stories" aria-labelledby="scenarios-heading">
+  <div class="container">
+    <div class="scenarios-inner">
+      <div>
+        <p class="section-eyebrow reveal">Real situations</p>
+        <h2 class="section-title reveal reveal-delay-1" id="scenarios-heading">
+          See it in action
+        </h2>
+        <p class="section-lead reveal reveal-delay-2" style="margin-bottom: 36px;">
+          These aren't edge cases. They're Tuesday.
+        </p>
+
+        <div class="scenario-tabs reveal reveal-delay-2" role="tablist" aria-label="Scenario examples">
+          <div class="scenario-tab active" role="tab" aria-selected="true" tabindex="0" data-scenario="0" onclick="switchScenario(0)" onkeydown="if(event.key==='Enter')switchScenario(0)">
+            <div class="scenario-tab-header">
+              <span class="scenario-tab-emoji" aria-hidden="true">💼</span>
+              <span class="scenario-tab-title">The weird coworker message</span>
+            </div>
+            <p class="scenario-tab-desc">Your manager forwards something passive-aggressive. You need to respond professionally without being a pushover.</p>
+          </div>
+
+          <div class="scenario-tab" role="tab" aria-selected="false" tabindex="0" data-scenario="1" onclick="switchScenario(1)" onkeydown="if(event.key==='Enter')switchScenario(1)">
+            <div class="scenario-tab-header">
+              <span class="scenario-tab-emoji" aria-hidden="true">🥂</span>
+              <span class="scenario-tab-title">Networking, and you're stuck</span>
+            </div>
+            <p class="scenario-tab-desc">You're at an industry event. You've introduced yourself. Now the conversation has stalled and you can't think of what's next.</p>
+          </div>
+
+          <div class="scenario-tab" role="tab" aria-selected="false" tabindex="0" data-scenario="2" onclick="switchScenario(2)" onkeydown="if(event.key==='Enter')switchScenario(2)">
+            <div class="scenario-tab-header">
+              <span class="scenario-tab-emoji" aria-hidden="true">🌙</span>
+              <span class="scenario-tab-title">The 3-day text gap</span>
+            </div>
+            <p class="scenario-tab-desc">You really like this person. There's been radio silence. You want to reach back out without seeming desperate or overly casual.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="scenario-display reveal reveal-delay-3">
+        <div class="scenario-phone" role="region" aria-label="Witly response suggestions">
+          <div class="scenario-context">Witly — Texting Mode</div>
+
+          <!-- SCENARIO 0 -->
+          <div class="scenario-content active" id="scenario-0" role="tabpanel">
+            <div class="scenario-situation">
+              <div class="scenario-situation-label">Situation</div>
+              Your manager just CC'd you on an email saying "wanted to loop you in since this keeps coming up" about a project you weren't late on.
+            </div>
+            <div class="scenario-options" aria-label="Suggested responses">
+              <div class="scenario-option">
+                <span class="scenario-option-color" style="background: var(--safe);" aria-hidden="true"></span>
+                <div>
+                  <div class="scenario-option-text">Thanks for including me — happy to align on timelines if there's any confusion. Want to hop on a quick call?</div>
+                  <div class="scenario-option-type">Warm · Professionally grounded</div>
+                </div>
+              </div>
+              <div class="scenario-option">
+                <span class="scenario-option-color" style="background: var(--playful);" aria-hidden="true"></span>
+                <div>
+                  <div class="scenario-option-text">Appreciate the loop-in. From my end, everything's on track per the brief — let me know if you're seeing something different.</div>
+                  <div class="scenario-option-type">Neutral · Subtly asserts your position</div>
+                </div>
+              </div>
+              <div class="scenario-option">
+                <span class="scenario-option-color" style="background: var(--bold);" aria-hidden="true"></span>
+                <div>
+                  <div class="scenario-option-text">I want to make sure we're on the same page — can you share what's been "coming up"? Happy to clarify anything.</div>
+                  <div class="scenario-option-type">Direct · Asks for specifics</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SCENARIO 1 -->
+          <div class="scenario-content" id="scenario-1" role="tabpanel">
+            <div class="scenario-situation">
+              <div class="scenario-situation-label">Situation</div>
+              You're at a design industry mixer. You've been talking to someone for 5 minutes. The conversation just hit a wall and you both looked at your drinks.
+            </div>
+            <div class="scenario-options" aria-label="Suggested responses">
+              <div class="scenario-option">
+                <span class="scenario-option-color" style="background: var(--safe);" aria-hidden="true"></span>
+                <div>
+                  <div class="scenario-option-text">Are you working on anything you're actually excited about right now, or is it mostly client work?</div>
+                  <div class="scenario-option-type">Warm · Invites real talk</div>
+                </div>
+              </div>
+              <div class="scenario-option">
+                <span class="scenario-option-color" style="background: var(--playful);" aria-hidden="true"></span>
+                <div>
+                  <div class="scenario-option-text">What's your honest take on this event? Good use of a Wednesday?</div>
+                  <div class="scenario-option-type">Playful · Builds instant rapport</div>
+                </div>
+              </div>
+              <div class="scenario-option">
+                <span class="scenario-option-color" style="background: var(--bold);" aria-hidden="true"></span>
+                <div>
+                  <div class="scenario-option-text">What's something you wish people asked you more at things like this?</div>
+                  <div class="scenario-option-type">Curious · Memorable</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SCENARIO 2 -->
+          <div class="scenario-content" id="scenario-2" role="tabpanel">
+            <div class="scenario-situation">
+              <div class="scenario-situation-label">Situation</div>
+              You matched with someone 10 days ago, had a good back-and-forth for two days, then both went quiet. You want to restart it naturally.
+            </div>
+            <div class="scenario-options" aria-label="Suggested responses">
+              <div class="scenario-option">
+                <span class="scenario-option-color" style="background: var(--safe);" aria-hidden="true"></span>
+                <div>
+                  <div class="scenario-option-text">okay resurfacing from my life being temporarily chaotic — how's your week been?</div>
+                  <div class="scenario-option-type">Light · Honest · No awkward explanation</div>
+                </div>
+              </div>
+              <div class="scenario-option">
+                <span class="scenario-option-color" style="background: var(--playful);" aria-hidden="true"></span>
+                <div>
+                  <div class="scenario-option-text">sorry I went ghost — genuinely got absorbed. still thinking about the thing you said about [topic]</div>
+                  <div class="scenario-option-type">Personal · Shows you were listening</div>
+                </div>
+              </div>
+              <div class="scenario-option">
+                <span class="scenario-option-color" style="background: var(--bold);" aria-hidden="true"></span>
+                <div>
+                  <div class="scenario-option-text">hi, I've been bad at this — are you still down to meet sometime?</div>
+                  <div class="scenario-option-type">Confident · Cuts straight to it</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── FEATURES ── -->
+<section class="features-section" aria-labelledby="features-heading">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 52px;">
+      <p class="section-eyebrow reveal">What makes it different</p>
+      <h2 class="section-title reveal reveal-delay-1" id="features-heading">
+        Intelligence that feels <em>human</em>
+      </h2>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-item reveal reveal-delay-1">
+        <span class="feature-emoji" aria-hidden="true">🧠</span>
+        <h3 class="feature-title">Emotionally calibrated</h3>
+        <p class="feature-desc">Witly understands relationship context, social dynamics, and anxiety levels — not just your words.</p>
+      </div>
+      <div class="feature-item reveal reveal-delay-2">
+        <span class="feature-emoji" aria-hidden="true">🎭</span>
+        <h3 class="feature-title">Three tones, always</h3>
+        <p class="feature-desc">Every situation gets a warm option, a playful option, and a bolder option. You're always in control of the energy.</p>
+      </div>
+      <div class="feature-item reveal reveal-delay-3">
+        <span class="feature-emoji" aria-hidden="true">🪴</span>
+        <h3 class="feature-title">Memory over time</h3>
+        <p class="feature-desc">Moments mode tracks ongoing conversations so Witly never needs you to re-explain who someone is.</p>
+      </div>
+      <div class="feature-item reveal reveal-delay-4">
+        <span class="feature-emoji" aria-hidden="true">🔇</span>
+        <h3 class="feature-title">Low cringe, always</h3>
+        <p class="feature-desc">Our cringe filter is built into every response. No try-hard lines. No pickup-artist energy. Nothing you'd be embarrassed to send.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials-section" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <div class="testimonials-header">
+      <p class="section-eyebrow reveal">Early access users</p>
+      <h2 class="section-title reveal reveal-delay-1" id="testimonials-heading">
+        How it's actually been used
+      </h2>
+      <p class="section-lead reveal reveal-delay-2">
+        We're in early access. These are real moments from our beta users.
+      </p>
+    </div>
+
+    <div class="testimonials-grid">
+
+      <article class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars" aria-label="5 stars">
+          <span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span>
+        </div>
+        <blockquote class="testimonial-quote">
+          "I have social anxiety and there's this running assumption that you'll just… figure it out. Witly doesn't judge the question. It just helps. The playful option in Texting Mode feels more like me than anything I'd come up with on my own."
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">M</div>
+          <div>
+            <div class="testimonial-name">Mara W.</div>
+            <div class="testimonial-handle">Beta user · Designer</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars" aria-label="5 stars">
+          <span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span>
+        </div>
+        <blockquote class="testimonial-quote">
+          "I used Live Mode at an industry dinner. Whispered my situation in the bathroom, glanced at the suggestion before walking back in. It was embarrassingly useful. The whole table laughed at the thing it gave me."
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">T</div>
+          <div>
+            <div class="testimonial-name">Theo R.</div>
+            <div class="testimonial-handle">Beta user · Product Manager</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial-card reveal reveal-delay-3">
+        <div class="testimonial-stars" aria-label="5 stars">
+          <span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span><span class="testimonial-star" aria-hidden="true">★</span>
+        </div>
+        <blockquote class="testimonial-quote">
+          "I reconnected with a close friend after a long, weird gap. I used Moments to keep track of what we'd talked about and how things stood. It helped me not say the wrong thing at the wrong time. We're genuinely closer now."
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">P</div>
+          <div>
+            <div class="testimonial-name">Priya K.</div>
+            <div class="testimonial-handle">Beta user · Writer</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA / WAITLIST ── -->
+<section class="cta-section" id="waitlist" aria-labelledby="cta-heading">
+  <div class="cta-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cta-card">
+      <p class="section-eyebrow" style="margin-bottom: 20px;">Early access</p>
+      <h2 class="cta-title" id="cta-heading">
+        Ready to feel more like<br><em>yourself</em> in every conversation?
+      </h2>
+      <p class="cta-subtitle">
+        Join the waitlist. We're letting in small batches — early users help shape how Witly evolves.
+      </p>
+
+      <div class="waitlist-form" id="waitlist-form" role="form" aria-label="Join the waitlist">
+        <label for="waitlist-email" class="sr-only">Email address</label>
+        <input
+          type="email"
+          id="waitlist-email"
+          class="waitlist-input"
+          placeholder="your@email.com"
+          autocomplete="email"
+          aria-required="true"
+        />
+        <button class="waitlist-btn" onclick="handleWaitlist(event)">Join Waitlist</button>
+      </div>
+
+      <div class="waitlist-success" id="waitlist-success" role="alert">
+        ✓ You're on the list — we'll be in touch soon.
+      </div>
+
+      <p class="waitlist-note">No spam. No pitch emails. Just an invite when your spot opens up.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ── FOOTER ── -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <div class="logo-mark" aria-hidden="true">W</div>
+          <span class="logo-name">Witly</span>
+        </div>
+        <p>AI social intelligence for the real world. Built for humans who want to feel more comfortable, natural, and confident in every conversation.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul class="footer-links">
+          <li><a href="#modes">Texting Mode</a></li>
+          <li><a href="#modes">Live Mode</a></li>
+          <li><a href="#modes">Moments</a></li>
+          <li><a href="#waitlist">Early Access</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Witly. All rights reserved.</p>
+      <p class="footer-tagline">Made for humans who like other humans.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── NAV SCROLL ──
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // ── REVEAL ON SCROLL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Trigger above-fold elements immediately
+  document.querySelectorAll('.hero .reveal').forEach(el => {
+    setTimeout(() => el.classList.add('visible'), 100);
+  });
+
+  // ── SCENARIO TABS ──
+  function switchScenario(index) {
+    document.querySelectorAll('.scenario-tab').forEach((tab, i) => {
+      tab.classList.toggle('active', i === index);
+      tab.setAttribute('aria-selected', i === index);
+    });
+    document.querySelectorAll('.scenario-content').forEach((content, i) => {
+      content.classList.toggle('active', i === index);
+    });
+  }
+
+  // ── WAITLIST FORM ──
+  function handleWaitlist(e) {
+    e.preventDefault();
+    const input = document.getElementById('waitlist-email');
+    const email = input.value.trim();
+    if (!email || !email.includes('@')) {
+      input.focus();
+      input.style.borderColor = 'rgba(184,92,74,0.5)';
+      setTimeout(() => { input.style.borderColor = ''; }, 2000);
+      return;
+    }
+    document.getElementById('waitlist-form').style.display = 'none';
+    const success = document.getElementById('waitlist-success');
+    success.style.display = 'block';
+    // Real integration: POST to your API here
+  }
+
+  document.getElementById('waitlist-email').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleWaitlist(e);
+  });
+</script>
+
+</body>
+</html>
