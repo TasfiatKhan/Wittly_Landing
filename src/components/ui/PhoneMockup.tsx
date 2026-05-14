@@ -15,7 +15,7 @@ export default function PhoneMockup() {
         background: 'var(--surface)',
         borderRadius: 40,
         border: '1px solid var(--border)',
-        boxShadow: '0 0 0 6px rgba(255,255,255,0.03), 0 40px 80px rgba(0,0,0,0.5), 0 8px 24px rgba(196,149,106,0.06)',
+        boxShadow: '0 0 0 6px rgba(255,255,255,0.02), 0 28px 56px rgba(0,0,0,0.36), 0 8px 24px rgba(196,149,106,0.09)',
         overflow: 'hidden',
       }}
     >

@@ -4,6 +4,7 @@ import HeroSection from '@/components/sections/HeroSection'
 import TickerSection from '@/components/sections/TickerSection'
 import ProblemSection from '@/components/sections/ProblemSection'
 import ModesSection from '@/components/sections/ModesSection'
+import AdaptabilitySection from '@/components/sections/AdaptabilitySection'
 import ScenarioSection from '@/components/sections/ScenarioSection'
 import DifferentiatorSection from '@/components/sections/DifferentiatorSection'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
@@ -22,6 +23,8 @@ export default function Home() {
       <ProblemSection />
       <Divider />
       <ModesSection />
+      <Divider />
+      <AdaptabilitySection />
       <Divider />
       <ScenarioSection />
       <Divider />

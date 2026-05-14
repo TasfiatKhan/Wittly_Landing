@@ -4,18 +4,18 @@
 
 @layer base {
   :root {
-    --bg:        #0F0E0C;
-    --bg2:       #151410;
-    --bg3:       #1C1A16;
-    --surface:   #232018;
-    --surface2:  #2B2720;
-    --border:    rgba(196,149,106,0.12);
+    --bg:        #121110;
+    --bg2:       #181614;
+    --bg3:       #1F1D19;
+    --surface:   #262320;
+    --surface2:  #2F2C28;
+    --border:    rgba(196,149,106,0.14);
     --accent:    #C4956A;
     --accent2:   #D4A574;
     --gold:      #E8C97A;
-    --text:      #F0EBE3;
-    --text2:     #B8AFA4;
-    --text3:     #7A7168;
+    --text:      #EDE8E1;
+    --text2:     #B2AAA1;
+    --text3:     #7C7469;
     --safe:      #5A8F6B;
     --playful:   #7B6FA8;
     --bold:      #B85C4A;
@@ -50,7 +50,7 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 999;
-    opacity: 0.4;
+    opacity: 0.2;
   }
 
   ::selection {

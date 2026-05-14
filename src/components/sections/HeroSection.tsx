@@ -27,13 +27,13 @@ export default function HeroSection() {
       <div aria-hidden="true" style={{
         position: 'absolute', top: -200, left: '50%', transform: 'translateX(-50%)',
         width: 900, height: 600,
-        background: 'radial-gradient(ellipse at center, rgba(196,149,106,0.07) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse at center, rgba(196,149,106,0.11) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
       <div aria-hidden="true" style={{
         position: 'absolute', bottom: -100, right: -200,
         width: 500, height: 400,
-        background: 'radial-gradient(ellipse at center, rgba(123,111,168,0.05) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse at center, rgba(196,149,106,0.04) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
