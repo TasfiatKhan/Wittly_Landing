@@ -15,7 +15,7 @@ const modes = [
     topBar: 'linear-gradient(90deg, var(--safe), transparent)',
     dotColor: 'var(--safe)',
     headline: 'Quick, thoughtful replies',
-    description: "Drop in a screenshot or describe the situation. Get three options back — each with a different energy. You pick what feels right, copy, send.",
+    description: "Describe the situation. Get three options back — each with a different energy. You pick what feels right, copy, send.",
     useCases: [
       "The text you've been staring at for 20 minutes",
       'A weird message from a coworker',
