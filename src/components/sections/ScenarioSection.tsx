@@ -10,9 +10,9 @@ const scenarios = [
     desc: 'Your manager forwards something passive-aggressive. You need to respond professionally without being a pushover.',
     situation: 'Your manager just CC\'d you on an email saying "wanted to loop you in since this keeps coming up" about a project you weren\'t late on.',
     options: [
-      { color: 'var(--safe)', text: 'Thanks for including me — happy to align on timelines if there\'s any confusion. Want to hop on a quick call?', type: 'Warm · Professionally grounded' },
-      { color: 'var(--playful)', text: 'Appreciate the loop-in. From my end, everything\'s on track per the brief — let me know if you\'re seeing something different.', type: 'Neutral · Subtly asserts your position' },
-      { color: 'var(--bold)', text: "I want to make sure we're on the same page — can you share what's been \"coming up\"? Happy to clarify anything.", type: 'Direct · Asks for specifics' },
+      { color: 'var(--safe)', text: 'Thanks for looping me in. From what I\'m tracking, we\'re on schedule — but let me know if there\'s something I should double-check.', type: 'Warm · Professionally grounded' },
+      { color: 'var(--playful)', text: 'Thanks for flagging — I think we\'re actually in good shape, but I might be missing context. Quick sync sometime today?', type: 'Collegial · Invites clarity' },
+      { color: 'var(--bold)', text: 'Can you share what specifically has been coming up? Want to make sure I\'m not missing something.', type: 'Direct · Asks for specifics' },
     ],
   },
   {
@@ -33,7 +33,7 @@ const scenarios = [
     situation: "You matched with someone 10 days ago, had a good back-and-forth for two days, then both went quiet. You want to restart it naturally.",
     options: [
       { color: 'var(--safe)', text: "okay resurfacing from my life being temporarily chaotic — how's your week been?", type: 'Light · Honest · No awkward explanation' },
-      { color: 'var(--playful)', text: 'sorry I went ghost — genuinely got absorbed. still thinking about the thing you said about [topic]', type: 'Personal · Shows you were listening' },
+      { color: 'var(--playful)', text: 'sorry I disappeared — life got loud for a minute. still thinking about what you said though', type: 'Personal · Shows you were listening' },
       { color: 'var(--bold)', text: "hi, I've been bad at this — are you still down to meet sometime?", type: "Confident · Cuts straight to it" },
     ],
   },

@@ -70,8 +70,8 @@ export default function HeroSection() {
               fontWeight: 500, lineHeight: 1.12, letterSpacing: '-1px',
               color: 'var(--text)', marginBottom: 24,
             }}>
-              Say the thing you<br />
-              actually <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>meant</em> to say.
+              Never run out of things<br />
+              to <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>say</em> again.
             </motion.h1>
 
             {/* Subhead */}
