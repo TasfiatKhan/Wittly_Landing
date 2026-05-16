@@ -59,26 +59,32 @@ Separate repo: `https://github.com/TasfiatKhan/Wittly_Landing`
 | Fonts | Lora (serif headings) + DM Sans (body) via next/font/google |
 
 ### Design System
-- **Palette (CSS vars):** `--bg #0F0E0C`, `--surface #232018`, `--accent #C4956A`, `--text #F0EBE3`, `--safe #5A8F6B`, `--playful #7B6FA8`, `--bold #B85C4A`
-- **Noise texture:** `body::before` SVG fractalNoise overlay
+- **Dark palette (CSS vars):** `--bg #121110`, `--surface #262320`, `--accent #C4956A`, `--text #EDE8E1`, `--safe #5A8F6B`, `--playful #7B6FA8`, `--bold #B85C4A`
+- **Light palette:** warm cream tones — `--bg #FDFAF7`, `--surface #FFFFFF`, `--text #1C1610`, `--text2 #5C4E41`. Same accent/safe/playful/bold as dark.
+- **Theme switching:** `data-theme` attribute on `<html>`. `ThemeContext` reads/writes `localStorage('witly-theme')`. Inline script in `<head>` sets attribute before hydration to prevent flash.
+- **Noise texture:** `body::before` SVG fractalNoise overlay (opacity 0.2 dark, 0.05 light)
 - **Animations:** Framer Motion for phone float (`y: [0,-12,0]`, `rotate: -1`) and floating badges; pure CSS `@keyframes ticker` for the social proof strip
 
 ### Page Sections (top → bottom)
-1. **Navbar** — fixed, scroll-aware, backdrop blur, mobile CTA
-2. **Hero** — serif headline, trust items, phone mockup with chat bubbles + two floating badges
+1. **Navbar** — fixed, scroll-aware, backdrop blur, theme toggle button (sun/moon), mobile CTA
+2. **Hero** — serif headline ("Never run out of things to say again."), trust items, phone mockup with chat bubbles + two floating badges
 3. **Ticker** — scrolling social proof strip (CSS animation, items duplicated for seamless loop)
 4. **Problem** — "Some conversations are hard" + anxiety spiral card visual
 5. **Modes** — three cards (Texting / Live / Moments) with use-case dot lists
-6. **Scenarios** — interactive 3-tab selector with sticky response display panel
-7. **Differentiators** — 4-column features grid
-8. **Testimonials** — 3 testimonial cards (Mara, Theo, Priya)
-9. **Waitlist CTA** — bordered card with gradient top line, email capture form
-10. **Footer** — 4-column grid
+6. **Adaptability** — centered headline "Conversations are human everywhere." + staggered context chip grid
+7. **Scenarios** — interactive 3-tab selector with sticky response display panel
+8. **Differentiators** — 4-column features grid
+9. **Testimonials** — 3 testimonial cards (Mara, Theo, Priya)
+10. **Waitlist CTA** — bordered card with gradient top line, email capture form
+11. **Footer** — 4-column grid
 
 ### Key Files
-- `src/app/globals.css` — CSS vars, noise texture, `@keyframes ticker`
-- `src/app/layout.tsx` — fonts, full OG/Twitter metadata
+- `src/app/globals.css` — CSS vars (dark + light), noise texture, `@keyframes ticker`
+- `src/app/layout.tsx` — fonts, full OG/Twitter metadata, flash-prevention script, `suppressHydrationWarning`
+- `src/context/ThemeContext.tsx` — dark/light theme context, localStorage persistence
+- `src/components/Providers.tsx` — client wrapper for ThemeProvider used in layout
 - `src/components/ui/PhoneMockup.tsx` — animated phone with chat thread + AI suggestion cards
+- `src/components/sections/AdaptabilitySection.tsx` — "Conversations are human everywhere" + context chips
 - `src/components/sections/ScenarioSection.tsx` — interactive tabs with React state
 - `src/components/sections/WaitlistSection.tsx` — email form with success state (TODO: wire to email service)
 - `src/components/ui/AnimatedSection.tsx` — scroll-triggered Framer Motion wrapper
@@ -88,7 +94,7 @@ Separate repo: `https://github.com/TasfiatKhan/Wittly_Landing`
 
 ---
 
-## Current Status (as of 2026-05-11)
+## Current Status (as of 2026-05-15)
 All Phase 1 + Phase 1.5 features complete and pushed. UX refinement phase underway. Full stack working end-to-end.
 
 **Pending before testing on device (run once):**
@@ -231,4 +237,9 @@ Apps live under `apps/` and are registered as `apps.users`, `apps.profiles`, `ap
 - **2026-05-12** — Dark/light theme toggle. `theme.ts`: added `darkColors` (dark grays, same accent/option colors) and `AppColors` type; `lightColors` is the existing palette. `ThemeContext.tsx`: React context providing `colors`, `isDark`, `toggleTheme`; preference persisted to SecureStore. `App.tsx` wrapped with `ThemeProvider`. All 9 screens: removed static `colors` import, added `useTheme()`, moved `StyleSheet.create` into `useMemo([colors])`, added `placeholderTextColor` + explicit `color` to all TextInputs. HomeScreen: toggle button (track+thumb pill) added to header row beside avatar — slides right and turns accent-colored in dark mode.
 - **2026-05-12** — Live Mode full redesign. Dark-themed layout (`#1A1A1A` background, `#242424` card surface). All input fields removed — Live Mode is now record-only. Instruction text ("Provide as much context as possible...") positioned absolutely at the vertical center of the screen, independent of the bottom bar so it stays put regardless of button placement. Record button pushed up toward thumb zone (`paddingBottom: spacing.xxl * 3`). Response cards scroll above the button (`paddingTop: spacing.xxl * 3`). Recording pulse animation drives scale (1→1.28) and opacity (1→0.55) simultaneously — button never changes color. `relationship_context` made optional in `LiveVoiceRequestSerializer` (default `'other'`); relationship context is now inferred from the voice input itself rather than requiring UI chips.
 - **2026-05-13** — Landing page built and pushed to `https://github.com/TasfiatKhan/Wittly_Landing`. Next.js 15 + Tailwind CSS + Framer Motion. Dark theme matching `witly-landing.html` reference. Sections: hero with animated phone mockup + floating badges, social proof ticker, problem/anxiety card, three-mode cards, interactive scenario tabs, 4-col features grid, testimonials, waitlist CTA card. Three animation fixes applied: Framer Motion for phone float and badges, CSS keyframe for ticker strip.
+- **2026-05-13** — Warm tone refinement: CSS vars lifted from pure black to warm charcoal (`--bg #121110`), text softened, borders warmed, hero glows switched to amber, phone shadow softened. Noise opacity reduced 0.4 → 0.2. Added `AdaptabilitySection` between Modes and Scenario: centered serif headline "Conversations are human everywhere." + staggered context chip grid with 12 real scenarios.
+- **2026-05-13** — AI prompt v2 refinement (all 4 files in `backend/prompts/v2/`). Added explicit quality test ("would a naturally smooth person say this out loud?"), sharpened type descriptions (bold = comfortable not performing, playful = observational not joke setup), added anti-pattern rules (no workshopped punchlines, no screenwriter energy, no internet humor). Notes are now friend's quick reads on timing, not analysis. Moments prompt: "generic suggestions are a failure here — Witly already knows this situation."
+- **2026-05-14** — Profile save (`PersonalitySetupScreen.handleSubmit`) now navigates to `Home` instead of `TextingMode` after a successful update.
+- **2026-05-14** — Landing page copy refinements: hero headline → "Never run out of things to say again." Scenario 1 (coworker) — all three options rewritten to be less corporate, each tone now distinctly different. Scenario 3 playful option — removed `[topic]` placeholder. Texting Mode card description — removed screenshot mention.
+- **2026-05-15** — Dark/light mode toggle on landing page. `ThemeContext.tsx` manages state, persists to `localStorage`, sets `data-theme` on `<html>`. `Providers.tsx` wraps layout. Light palette: warm cream tones (`--bg #FDFAF7`, white surfaces, warm brown text). Navbar: sun/moon icon button, theme-aware scrolled background. Inline script in `<head>` prevents theme flash on reload. `suppressHydrationWarning` on `<html>` and `<body>` resolves extension-injected attribute mismatch (Grammarly etc.).
 - **2026-05-06** — Major context expansion and framing overhaul. `social_anxiety_level` (none/mild/moderate/high, default mild) added to `UserProfile` — migration pending (`0005`). Non-prescriptive language rule embedded as permanent product philosophy and enforced in `system_personality.txt`: all `note` and `delivery` fields must use suggestion framing, never commands. `relationship_context` (stranger/new_acquaintance/crush/friend/close_friend/colleague/date/other) and `relationship_other` (free text, used when other is selected) and `environment` (optional free text) added to both `TextingRequestSerializer` and `LiveRequestSerializer`. `AIService._resolve_relationship()` substitutes `relationship_other` into the prompt when context is "other". All three v2 prompt templates updated: `system_personality.txt` gets `{social_anxiety_level}` and non-prescriptive framing rules; `texting_mode.txt` and `live_mode.txt` get `{relationship_context}` and `{environment}`. Frontend input fields for new request fields are pending next session.
