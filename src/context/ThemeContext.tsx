@@ -8,16 +8,16 @@ interface ThemeContextValue {
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
-  isDark: true,
+  isDark: false,
   toggleTheme: () => {},
 })
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [isDark, setIsDark] = useState(true)
+  const [isDark, setIsDark] = useState(false)
 
   useEffect(() => {
     const stored = localStorage.getItem('witly-theme')
-    const dark = stored ? stored === 'dark' : true
+    const dark = stored ? stored === 'dark' : false
     setIsDark(dark)
     document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
   }, [])

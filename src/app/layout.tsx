@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${lora.variable} ${dmSans.variable}`} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('witly-theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')}catch(e){}` }} />
+        <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('witly-theme');document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light')}catch(e){}` }} />
       </head>
       <body suppressHydrationWarning>
         <Providers>{children}</Providers>
