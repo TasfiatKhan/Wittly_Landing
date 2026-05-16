@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Lora, DM_Sans } from 'next/font/google'
+import Providers from '@/components/Providers'
 import './globals.css'
 
 const lora = Lora({
@@ -48,8 +49,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${lora.variable} ${dmSans.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${lora.variable} ${dmSans.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('witly-theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')}catch(e){}` }} />
+      </head>
+      <body suppressHydrationWarning>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }

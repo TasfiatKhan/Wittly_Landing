@@ -2,9 +2,28 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { useTheme } from '@/context/ThemeContext'
+
+function SunIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+    </svg>
+  )
+}
+
+function MoonIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    </svg>
+  )
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const { isDark, toggleTheme } = useTheme()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -25,7 +44,7 @@ export default function Navbar() {
         zIndex: 100,
         padding: '20px 0',
         transition: 'background 0.4s, backdrop-filter 0.4s, border-color 0.4s',
-        background: scrolled ? 'rgba(15,14,12,0.88)' : 'transparent',
+        background: scrolled ? (isDark ? 'rgba(18,17,16,0.88)' : 'rgba(253,250,247,0.92)') : 'transparent',
         backdropFilter: scrolled ? 'blur(18px)' : 'none',
         borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
       }}
@@ -67,6 +86,26 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            style={{
+              width: 36, height: 36, borderRadius: '50%',
+              border: '1px solid var(--border)',
+              background: 'var(--surface)',
+              cursor: 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              color: 'var(--text2)',
+              transition: 'background 0.2s, border-color 0.2s, color 0.2s',
+              flexShrink: 0,
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(196,149,106,0.35)'; e.currentTarget.style.color = 'var(--accent)' }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text2)' }}
+          >
+            {isDark ? <SunIcon /> : <MoonIcon />}
+          </button>
 
           {/* Desktop CTA */}
           <a href="#waitlist" className="hidden md:block" style={{
