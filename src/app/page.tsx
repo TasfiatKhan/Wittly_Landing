@@ -3,6 +3,7 @@ import Footer from '@/components/layout/Footer'
 import HeroSection from '@/components/sections/HeroSection'
 import TickerSection from '@/components/sections/TickerSection'
 import ProblemSection from '@/components/sections/ProblemSection'
+import MissionSection from '@/components/sections/MissionSection'
 import ModesSection from '@/components/sections/ModesSection'
 import AdaptabilitySection from '@/components/sections/AdaptabilitySection'
 import ScenarioSection from '@/components/sections/ScenarioSection'
@@ -21,6 +22,8 @@ export default function Home() {
       <HeroSection />
       <TickerSection />
       <ProblemSection />
+      <Divider />
+      <MissionSection />
       <Divider />
       <ModesSection />
       <Divider />
