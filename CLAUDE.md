@@ -42,7 +42,7 @@ Thin context → generic responses. Rich context → responses that feel written
 
 ## Landing Page — witly_landing/
 
-Separate repo: `https://github.com/TasfiatKhan/Wittly_Landing`
+Separate repo: `https://github.com/TasfiatKhan/Witly_Landing`
 
 ### Stack
 | Layer | Technology |
@@ -230,3 +230,6 @@ Apps live under `apps/` and are registered as `apps.users`, `apps.profiles`, `ap
 - **2026-05-14** — Landing page copy: hero headline → "Never run out of things to say again."; scenario 1 options rewritten; scenario 3 playful placeholder removed; Texting Mode card trimmed.
 - **2026-05-15** — Landing page dark/light toggle: `ThemeContext.tsx`, `Providers.tsx`, light CSS palette, Navbar sun/moon button, flash-prevention inline script, `suppressHydrationWarning` on `<html>` + `<body>`.
 - **2026-05-16** — 23 global Claude Code skills created in `~/.claude/skills/` covering full Witly stack (Django, RN, Next.js, prompts, auth, analytics, design tokens, and more).
+- **2026-05-16** — `MissionSection` added between Problem and Modes: eyebrow, serif headline "Built for the moments that matter most.", two staggered paragraphs with Framer Motion whileInView reveals.
+- **2026-05-16** — Loops waitlist integration: `src/app/api/waitlist/route.ts` POSTs to Loops API with `LOOPS_API_KEY` (server-only); `WaitlistSection` real fetch, `AnimatePresence` success fade, inline API error message.
+- **2026-05-17** — Next.js upgraded to latest version.
