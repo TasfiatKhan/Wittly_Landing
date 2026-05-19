@@ -42,7 +42,7 @@ export default function HowItWorksSection() {
             How it works.
           </h2>
           <p className="mt-4 text-lg text-warm-600 max-w-lg mx-auto leading-relaxed">
-            Three steps. No complicated setup. No trying to figure out what the AI wants.
+            Three steps. No complicated setup. No prompting, no friction.
           </p>
         </AnimatedSection>
 

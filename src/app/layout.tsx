@@ -21,9 +21,9 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: 'Witly — Social Intelligence, Made Natural',
   description:
-    'Witly helps you navigate real conversations with more ease, confidence, and warmth. AI-powered social intelligence for texting, live moments, and ongoing relationships.',
+    'Witly helps you navigate real conversations with more ease, confidence, and warmth. Social intelligence for texting, live moments, and ongoing relationships.',
   keywords: [
-    'AI social assistant', 'conversation help', 'social confidence',
+    'social assistant', 'conversation help', 'social confidence',
     'texting advice', 'social anxiety', 'conversational intelligence',
     'dating advice', 'social copilot',
   ],
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
     url: 'https://witly.app',
     siteName: 'Witly',
     title: 'Witly — Social Intelligence, Made Natural',
-    description: 'An AI social copilot that helps you feel more comfortable, natural, and confident in every conversation.',
+    description: 'A social copilot that helps you feel more comfortable, natural, and confident in every conversation.',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Witly' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Witly — Social Intelligence, Made Natural',
-    description: 'An AI social copilot that helps you feel more comfortable, natural, and confident in every conversation.',
+    description: 'A social copilot that helps you feel more comfortable, natural, and confident in every conversation.',
     images: ['/og-image.png'],
   },
   robots: { index: true, follow: true },

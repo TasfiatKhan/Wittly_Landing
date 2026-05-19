@@ -76,7 +76,7 @@ export default function HeroSection() {
 
             {/* Subhead */}
             <motion.p variants={stagger.item} style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--text2)', marginBottom: 44, maxWidth: 480, fontWeight: 300 }}>
-              Witly is your AI social copilot — helping you navigate conversations with more ease, warmth, and confidence. Texting, in-person, ongoing. Whatever the moment calls for.
+              Witly is your social copilot — helping you navigate conversations with more ease, warmth, and confidence. Texting, in-person, ongoing. Whatever the moment calls for.
             </motion.p>
 
             {/* Actions */}

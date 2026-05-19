@@ -28,7 +28,7 @@ export default function Footer() {
               <span style={{ fontFamily: 'var(--font-serif)', fontSize: 19, fontWeight: 500, color: 'var(--text)' }}>Witly</span>
             </div>
             <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.7, maxWidth: 240 }}>
-              AI social intelligence for the real world. Built for humans who want to feel more comfortable and natural in every conversation.
+              Social intelligence for the real world. Built for humans who want to feel more comfortable and natural in every conversation.
             </p>
           </div>
 
