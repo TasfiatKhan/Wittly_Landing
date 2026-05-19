@@ -69,7 +69,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop nav links */}
-          <ul style={{ display: 'flex', gap: 36, listStyle: 'none', margin: 0, padding: 0 }} className="hidden md:flex">
+          <ul style={{ gap: 36, listStyle: 'none', margin: 0, padding: 0 }} className="hidden md:flex">
             {[
               { label: 'How it works', href: '#how-it-works' },
               { label: 'Modes', href: '#modes' },
