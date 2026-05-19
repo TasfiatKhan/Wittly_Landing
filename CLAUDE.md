@@ -233,3 +233,5 @@ Apps live under `apps/` and are registered as `apps.users`, `apps.profiles`, `ap
 - **2026-05-16** — `MissionSection` added between Problem and Modes: eyebrow, serif headline "Built for the moments that matter most.", two staggered paragraphs with Framer Motion whileInView reveals.
 - **2026-05-16** — Loops waitlist integration: `src/app/api/waitlist/route.ts` POSTs to Loops API with `LOOPS_API_KEY` (server-only); `WaitlistSection` real fetch, `AnimatePresence` success fade, inline API error message.
 - **2026-05-17** — Next.js upgraded to latest version.
+- **2026-05-18** — Skills library: 3 new lead skills (`backend-lead`, `frontend-lead`, `app-lead`) as stack-agnostic decision frameworks with coordination protocols; all 13 existing skills de-Witly-ified (generic key names, model names, screen names).
+- **2026-05-19** — Navbar mobile fix: removed `display: 'flex'` inline style from nav links `<ul>` that was overriding Tailwind's `hidden md:flex`, causing links to always render on mobile.
