@@ -7,7 +7,7 @@ const features = [
   {
     emoji: '🧠',
     title: 'Emotionally calibrated',
-    desc: 'Witly understands relationship context, social dynamics, and anxiety levels — not just your words.',
+    desc: 'Livadra understands relationship context, social dynamics, and anxiety levels — not just your words.',
   },
   {
     emoji: '🎭',
@@ -17,7 +17,7 @@ const features = [
   {
     emoji: '🪴',
     title: 'Memory over time',
-    desc: "Moments mode tracks ongoing conversations so Witly never needs you to re-explain who someone is.",
+    desc: "Moments mode tracks ongoing conversations so Livadra never needs you to re-explain who someone is.",
   },
   {
     emoji: '🔇',
@@ -29,7 +29,7 @@ const features = [
 export default function DifferentiatorSection() {
   return (
     <section style={{ padding: '80px 0' }} aria-labelledby="features-heading">
-      <div className="container-witly">
+      <div className="container-livadra">
         <AnimatedSection style={{ textAlign: 'center', marginBottom: 52 }}>
           <span className="section-eyebrow" style={{ display: 'block', textAlign: 'center' }}>What makes it different</span>
           <h2 className="section-title" id="features-heading" style={{ textAlign: 'center' }}>

@@ -19,28 +19,28 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Witly — Social Intelligence, Made Natural',
+  title: 'Livadra — Social Intelligence, Made Natural',
   description:
-    'Witly helps you navigate real conversations with more ease, confidence, and warmth. Social intelligence for texting, live moments, and ongoing relationships.',
+    'Livadra helps you navigate real conversations with more ease, confidence, and warmth. Social intelligence for texting, live moments, and ongoing relationships.',
   keywords: [
     'social assistant', 'conversation help', 'social confidence',
     'texting advice', 'social anxiety', 'conversational intelligence',
     'dating advice', 'social copilot',
   ],
-  authors: [{ name: 'Witly' }],
-  metadataBase: new URL('https://witly.app'),
+  authors: [{ name: 'Livadra' }],
+  metadataBase: new URL('https://livadra.app'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://witly.app',
-    siteName: 'Witly',
-    title: 'Witly — Social Intelligence, Made Natural',
+    url: 'https://livadra.app',
+    siteName: 'Livadra',
+    title: 'Livadra — Social Intelligence, Made Natural',
     description: 'A social copilot that helps you feel more comfortable, natural, and confident in every conversation.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Witly' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Livadra' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Witly — Social Intelligence, Made Natural',
+    title: 'Livadra — Social Intelligence, Made Natural',
     description: 'A social copilot that helps you feel more comfortable, natural, and confident in every conversation.',
     images: ['/og-image.png'],
   },
@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${lora.variable} ${dmSans.variable}`} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('witly-theme');document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light')}catch(e){}` }} />
+        <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('livadra-theme');document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light')}catch(e){}` }} />
       </head>
       <body suppressHydrationWarning>
         <Providers>{children}</Providers>

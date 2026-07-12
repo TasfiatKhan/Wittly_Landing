@@ -9,7 +9,7 @@ export default function Footer() {
 
   return (
     <footer role="contentinfo" style={{ padding: '60px 0 40px', borderTop: '1px solid var(--border)' }}>
-      <div className="container-witly">
+      <div className="container-livadra">
         {/* Main grid */}
         <div style={{
           display: 'grid',
@@ -25,7 +25,7 @@ export default function Footer() {
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontFamily: 'var(--font-serif)', fontWeight: 600, fontSize: 16, color: '#1A1510',
               }} aria-hidden="true">W</div>
-              <span style={{ fontFamily: 'var(--font-serif)', fontSize: 19, fontWeight: 500, color: 'var(--text)' }}>Witly</span>
+              <span style={{ fontFamily: 'var(--font-serif)', fontSize: 19, fontWeight: 500, color: 'var(--text)' }}>Livadra</span>
             </div>
             <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.7, maxWidth: 240 }}>
               Social intelligence for the real world. Built for humans who want to feel more comfortable and natural in every conversation.
@@ -84,7 +84,7 @@ export default function Footer() {
           flexWrap: 'wrap', gap: 10,
           paddingTop: 24, borderTop: '1px solid var(--border)',
         }}>
-          <p style={{ fontSize: 13, color: 'var(--text3)' }}>© {currentYear} Witly. All rights reserved.</p>
+          <p style={{ fontSize: 13, color: 'var(--text3)' }}>© {currentYear} Livadra. All rights reserved.</p>
           <p style={{ fontSize: 13, color: 'var(--text3)', fontStyle: 'italic' }}>Made for humans who like other humans.</p>
         </div>
       </div>

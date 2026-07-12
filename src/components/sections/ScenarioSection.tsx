@@ -44,7 +44,7 @@ export default function ScenarioSection() {
 
   return (
     <section style={{ padding: '100px 0' }} id="stories" aria-labelledby="scenarios-heading">
-      <div className="container-witly">
+      <div className="container-livadra">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 80, alignItems: 'start' }}>
           {/* Left: tabs */}
           <div>
@@ -102,7 +102,7 @@ export default function ScenarioSection() {
           <AnimatedSection delay={0.2} style={{ position: 'sticky', top: 100 }}>
             <div
               role="region"
-              aria-label="Witly response suggestions"
+              aria-label="Livadra response suggestions"
               style={{
                 background: 'var(--surface)', border: '1px solid var(--border)',
                 borderRadius: 28, padding: '24px 20px',
@@ -110,7 +110,7 @@ export default function ScenarioSection() {
               }}
             >
               <div style={{ fontSize: 11, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 16, paddingBottom: 12, borderBottom: '1px solid var(--border)' }}>
-                Witly — Texting Mode
+                Livadra — Texting Mode
               </div>
 
               {/* Situation */}

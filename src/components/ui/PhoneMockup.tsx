@@ -6,7 +6,7 @@ export default function PhoneMockup() {
   return (
     <motion.div
       role="img"
-      aria-label="Witly app showing conversation suggestions"
+      aria-label="Livadra app showing conversation suggestions"
       animate={{ y: [0, -12, 0] }}
       transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
       style={{
@@ -61,9 +61,9 @@ export default function PhoneMockup() {
         </div>
 
         {/* AI suggestions card */}
-        <div aria-label="Witly suggestions" style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 14, padding: 12 }}>
+        <div aria-label="Livadra suggestions" style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 14, padding: 12 }}>
           <div style={{ fontSize: 10, fontWeight: 500, color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>
-            Witly suggests
+            Livadra suggests
           </div>
 
           {[

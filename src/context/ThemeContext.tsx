@@ -16,7 +16,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [isDark, setIsDark] = useState(false)
 
   useEffect(() => {
-    const stored = localStorage.getItem('witly-theme')
+    const stored = localStorage.getItem('livadra-theme')
     const dark = stored ? stored === 'dark' : false
     setIsDark(dark)
     document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
@@ -25,7 +25,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const toggleTheme = () => {
     setIsDark(prev => {
       const next = !prev
-      localStorage.setItem('witly-theme', next ? 'dark' : 'light')
+      localStorage.setItem('livadra-theme', next ? 'dark' : 'light')
       document.documentElement.setAttribute('data-theme', next ? 'dark' : 'light')
       return next
     })

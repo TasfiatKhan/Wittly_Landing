@@ -37,7 +37,7 @@ export default function HeroSection() {
         pointerEvents: 'none',
       }} />
 
-      <div className="container-witly" style={{ width: '100%' }}>
+      <div className="container-livadra" style={{ width: '100%' }}>
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -76,7 +76,7 @@ export default function HeroSection() {
 
             {/* Subhead */}
             <motion.p variants={stagger.item} style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--text2)', marginBottom: 44, maxWidth: 480, fontWeight: 300 }}>
-              Witly is your social copilot — helping you navigate conversations with more ease, warmth, and confidence. Texting, in-person, ongoing. Whatever the moment calls for.
+              Livadra is your social copilot — helping you navigate conversations with more ease, warmth, and confidence. Texting, in-person, ongoing. Whatever the moment calls for.
             </motion.p>
 
             {/* Actions */}

@@ -25,12 +25,12 @@ export default function PositioningSection() {
             Let&apos;s be clear
           </p>
           <h2 className="font-serif text-3xl md:text-4xl text-warm-900 leading-tight">
-            Witly isn&apos;t here to hand you lines.
+            Livadra isn&apos;t here to hand you lines.
             <br />
             <span style={{ color: '#C4956A' }}>It&apos;s here to help you think.</span>
           </h2>
           <p className="mt-4 text-base md:text-lg text-warm-600 leading-relaxed text-pretty">
-            Most apps tell you exactly what to say. Witly gives you options, calibrated to your
+            Most apps tell you exactly what to say. Livadra gives you options, calibrated to your
             situation and your personality, and lets you decide. Because the best response is
             still the one that sounds like you.
           </p>
@@ -60,7 +60,7 @@ export default function PositioningSection() {
                   ✕
                 </div>
                 <p className="text-sm font-semibold text-warm-600 uppercase tracking-wider">
-                  Witly is NOT
+                  Livadra is NOT
                 </p>
               </div>
               <ul className="space-y-3">
@@ -100,7 +100,7 @@ export default function PositioningSection() {
                   className="text-sm font-semibold uppercase tracking-wider"
                   style={{ color: '#C4956A' }}
                 >
-                  Witly IS
+                  Livadra IS
                 </p>
               </div>
               <ul className="space-y-3">
@@ -124,7 +124,7 @@ export default function PositioningSection() {
             &ldquo;Sometimes you just need a socially intelligent friend who&apos;s been
             in a lot of situations and has good judgment.&rdquo;
           </blockquote>
-          <p className="mt-3 text-sm text-warm-500">— The idea behind Witly</p>
+          <p className="mt-3 text-sm text-warm-500">— The idea behind Livadra</p>
         </AnimatedSection>
       </div>
     </section>

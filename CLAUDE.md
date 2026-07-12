@@ -1,4 +1,4 @@
-# Witly — CLAUDE.md
+# Livadra — CLAUDE.md
 
 Session continuity document. Update after every significant implementation step.
 
@@ -10,7 +10,7 @@ An AI-powered social intelligence and situational humor assistant for real-world
 
 ## Product Vision
 
-### What Witly Is
+### What Livadra Is
 A broader AI social copilot — not a dating reply generator. Three complementary modes:
 - **Texting Mode** — quick one-off help with a specific message or situation
 - **Live Mode** — real-time voice-input assistance for situations happening right now
@@ -40,9 +40,9 @@ Every AI response returns **structured JSON**: safe / playful / bold options (ea
 ### Context Quality Principle
 Thin context → generic responses. Rich context → responses that feel written for that exact moment. Encourage users to provide relationship, vibe, and goal in every request. Reflected in UX copy, placeholders, and onboarding.
 
-## Landing Page — witly_landing/
+## Landing Page — livadra_landing/
 
-Separate repo: `https://github.com/TasfiatKhan/Witly_Landing`
+Separate repo: `https://github.com/TasfiatKhan/Livadra_Landing`
 
 ### Stack
 | Layer | Technology |
@@ -56,7 +56,7 @@ Separate repo: `https://github.com/TasfiatKhan/Witly_Landing`
 ### Design System
 - **Dark palette:** `--bg #121110`, `--surface #262320`, `--accent #C4956A`, `--text #EDE8E1`, `--safe #5A8F6B`, `--playful #7B6FA8`, `--bold #B85C4A`
 - **Light palette:** `--bg #FDFAF7`, `--surface #FFFFFF`, `--text #1C1610`, `--text2 #5C4E41`. Same accent/safe/playful/bold as dark.
-- **Theme switching:** `data-theme` on `<html>`; `ThemeContext` reads/writes `localStorage('witly-theme')`; inline `<head>` script prevents flash.
+- **Theme switching:** `data-theme` on `<html>`; `ThemeContext` reads/writes `localStorage('livadra-theme')`; inline `<head>` script prevents flash.
 - **Noise texture:** `body::before` SVG fractalNoise overlay (opacity 0.2 dark, 0.05 light)
 - **Animations:** Framer Motion for phone float (`y: [0,-12,0]`, `rotate: -1`) and floating badges; CSS `@keyframes ticker` for social proof strip.
 
@@ -166,7 +166,7 @@ Apps live under `apps/` and are registered as `apps.users`, `apps.profiles`, `ap
 | 23 | Moments creation: remove mode + vibe fields, update situation label | complete — full stack |
 | 24 | Empty transcription UX: Live Mode error copy, Moments coaching exchange | complete — full stack |
 | 25 | Dark/light theme toggle: ThemeContext, darkColors, toggle on HomeScreen | complete — frontend |
-| 26 | Witly logo: SVG + WitlyLogo RN component | complete — frontend |
+| 26 | Livadra logo: SVG + LivadraLogo RN component | complete — frontend |
 | 27 | Analytics dashboard | upcoming — Phase 2 |
 | — | Delivery Coaching (v2) | out of scope |
 
@@ -217,21 +217,21 @@ Apps live under `apps/` and are registered as `apps.users`, `apps.profiles`, `ap
 - **2026-05-10** — Empty transcription guard in `LiveVoiceView` (< 10 chars → 400); pulse via `Animated.parallel` (scale 1→1.28 + opacity 1→0.55).
 - **2026-05-10** — Short response enforcement in `live_mode.txt` + `moments_mode.txt`; live `max_tokens` 1024 → 600.
 - **2026-05-11** — Design token system: `frontend/src/theme.ts` with `lightColors`, `typography`, `spacing`, `radii`, `shadow.card`; applied to all 9 screens via `useMemo([colors])`.
-- **2026-05-12** — Witly logo: `logo.svg` + `WitlyLogo.tsx` RN component; HomeScreen text replaced with `<WitlyLogo size={56} />`.
+- **2026-05-12** — Livadra logo: `logo.svg` + `LivadraLogo.tsx` RN component; HomeScreen text replaced with `<LivadraLogo size={56} />`.
 - **2026-05-12** — UX nav cleanup: `←` back buttons on Texting/Moments screens; HomeScreen avatar circle (first letter of username) → PersonalitySetup.
 - **2026-05-12** — Moments creation form: removed Mode selector + environment field; relabelled "What's the situation?" → "What's the situation and what do you need?".
 - **2026-05-12** — Empty transcription UX: Live Mode error copy updated; Moments sends coaching exchange instead of 400.
 - **2026-05-12** — Dark/light theme toggle: `darkColors` + `AppColors` in `theme.ts`; `ThemeContext` with SecureStore persistence; all 9 screens use `useTheme()`; toggle button on HomeScreen.
 - **2026-05-12** — Live Mode full redesign: record-only UI, dark layout (`#1A1A1A`), thumb-zone button, `relationship_context` optional in `LiveVoiceRequestSerializer`.
-- **2026-05-13** — Landing page built and pushed: Next.js 15 + Tailwind + Framer Motion; all 11 sections live at `https://github.com/TasfiatKhan/Wittly_Landing`.
+- **2026-05-13** — Landing page built and pushed: Next.js 15 + Tailwind + Framer Motion; all 11 sections live at `https://github.com/TasfiatKhan/Livadra_Landing`.
 - **2026-05-13** — Landing page warm tone: `--bg #121110`, noise 0.4 → 0.2, `AdaptabilitySection` added between Modes and Scenarios.
 - **2026-05-13** — AI prompts v2 refinement: quality test added ("would a smooth person say this?"), type descriptions sharpened, anti-pattern rules added to all 4 files in `backend/prompts/v2/`.
 - **2026-05-14** — Profile save navigates to `Home` instead of `TextingMode` (`PersonalitySetupScreen.handleSubmit`).
 - **2026-05-14** — Landing page copy: hero headline → "Never run out of things to say again."; scenario 1 options rewritten; scenario 3 playful placeholder removed; Texting Mode card trimmed.
 - **2026-05-15** — Landing page dark/light toggle: `ThemeContext.tsx`, `Providers.tsx`, light CSS palette, Navbar sun/moon button, flash-prevention inline script, `suppressHydrationWarning` on `<html>` + `<body>`.
-- **2026-05-16** — 23 global Claude Code skills created in `~/.claude/skills/` covering full Witly stack (Django, RN, Next.js, prompts, auth, analytics, design tokens, and more).
+- **2026-05-16** — 23 global Claude Code skills created in `~/.claude/skills/` covering full Livadra stack (Django, RN, Next.js, prompts, auth, analytics, design tokens, and more).
 - **2026-05-16** — `MissionSection` added between Problem and Modes: eyebrow, serif headline "Built for the moments that matter most.", two staggered paragraphs with Framer Motion whileInView reveals.
 - **2026-05-16** — Loops waitlist integration: `src/app/api/waitlist/route.ts` POSTs to Loops API with `LOOPS_API_KEY` (server-only); `WaitlistSection` real fetch, `AnimatePresence` success fade, inline API error message.
 - **2026-05-17** — Next.js upgraded to latest version.
-- **2026-05-18** — Skills library: 3 new lead skills (`backend-lead`, `frontend-lead`, `app-lead`) as stack-agnostic decision frameworks with coordination protocols; all 13 existing skills de-Witly-ified (generic key names, model names, screen names).
+- **2026-05-18** — Skills library: 3 new lead skills (`backend-lead`, `frontend-lead`, `app-lead`) as stack-agnostic decision frameworks with coordination protocols; all 13 existing skills de-Livadra-ified (generic key names, model names, screen names).
 - **2026-05-19** — Navbar mobile fix: removed `display: 'flex'` inline style from nav links `<ul>` that was overriding Tailwind's `hidden md:flex`, causing links to always render on mobile.

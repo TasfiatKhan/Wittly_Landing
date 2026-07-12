@@ -52,7 +52,7 @@ export default function WaitlistSection() {
         pointerEvents: 'none',
       }} />
 
-      <div className="container-witly">
+      <div className="container-livadra">
         {/* CTA card */}
         <div style={{
           background: 'var(--surface)', border: '1px solid var(--border)',
@@ -83,7 +83,7 @@ export default function WaitlistSection() {
           </h2>
 
           <p style={{ fontSize: 17, color: 'var(--text2)', marginBottom: 44, fontWeight: 300, maxWidth: 480, marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
-            Join the waitlist. We&apos;re letting in small batches — early users help shape how Witly evolves.
+            Join the waitlist. We&apos;re letting in small batches — early users help shape how Livadra evolves.
           </p>
 
           <AnimatePresence mode="wait">

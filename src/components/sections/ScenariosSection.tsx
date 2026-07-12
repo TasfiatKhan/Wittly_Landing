@@ -82,7 +82,7 @@ export default function ScenariosSection() {
             Sound familiar?
           </p>
           <h2 className="font-serif text-4xl md:text-5xl text-warm-900 leading-tight">
-            Situations Witly
+            Situations Livadra
             <br />
             was made for.
           </h2>

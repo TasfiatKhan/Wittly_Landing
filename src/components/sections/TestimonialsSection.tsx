@@ -8,7 +8,7 @@ const testimonials = [
     initial: 'M',
     name: 'Mara W.',
     role: 'Beta user · Designer',
-    quote: "I have social anxiety and there's this running assumption that you'll just… figure it out. Witly doesn't judge the question. It just helps. The playful option in Texting Mode feels more like me than anything I'd come up with on my own.",
+    quote: "I have social anxiety and there's this running assumption that you'll just… figure it out. Livadra doesn't judge the question. It just helps. The playful option in Texting Mode feels more like me than anything I'd come up with on my own.",
   },
   {
     initial: 'T',
@@ -27,7 +27,7 @@ const testimonials = [
 export default function TestimonialsSection() {
   return (
     <section style={{ padding: '100px 0' }} aria-labelledby="testimonials-heading">
-      <div className="container-witly">
+      <div className="container-livadra">
         <AnimatedSection style={{ textAlign: 'center', marginBottom: 56 }}>
           <span className="section-eyebrow" style={{ display: 'block', textAlign: 'center' }}>Early access users</span>
           <h2 className="section-title" id="testimonials-heading" style={{ textAlign: 'center' }}>

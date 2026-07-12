@@ -49,10 +49,10 @@ export default function Navbar() {
         borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
       }}
     >
-      <div className="container-witly">
+      <div className="container-livadra">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           {/* Logo */}
-          <a href="#" aria-label="Witly home" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <a href="#" aria-label="Livadra home" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <div style={{
               width: 34, height: 34,
               background: 'var(--accent)',
@@ -64,7 +64,7 @@ export default function Navbar() {
               letterSpacing: '-0.5px',
             }} aria-hidden="true">W</div>
             <span style={{ fontFamily: 'var(--font-serif)', fontSize: 20, fontWeight: 500, color: 'var(--text)', letterSpacing: '-0.3px' }}>
-              Witly
+              Livadra
             </span>
           </a>
 

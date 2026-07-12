@@ -53,7 +53,7 @@ const modes = [
     topBar: 'linear-gradient(90deg, var(--playful), transparent)',
     dotColor: 'var(--playful)',
     headline: 'Ongoing context, no re-explaining',
-    description: "For the situations that keep unfolding. Witly remembers the history, the person, the tone you've been setting — and helps you continue naturally, not from scratch.",
+    description: "For the situations that keep unfolding. Livadra remembers the history, the person, the tone you've been setting — and helps you continue naturally, not from scratch.",
     useCases: [
       "A new friendship you're still calibrating",
       'Slow-burn conversation with someone you like',
@@ -66,14 +66,14 @@ const modes = [
 export default function ModesSection() {
   return (
     <section style={{ padding: '100px 0' }} id="modes" aria-labelledby="modes-heading">
-      <div className="container-witly">
+      <div className="container-livadra">
         <AnimatedSection className="text-center" style={{ textAlign: 'center', marginBottom: 64 }}>
           <span className="section-eyebrow" style={{ display: 'block', textAlign: 'center' }}>Three modes</span>
           <h2 className="section-title" id="modes-heading" style={{ textAlign: 'center' }}>
             Built for every kind of moment
           </h2>
           <p className="section-lead" style={{ margin: '0 auto', textAlign: 'center' }}>
-            Social life doesn&apos;t fit into one box. Witly has three distinct modes, each designed for where you actually are.
+            Social life doesn&apos;t fit into one box. Livadra has three distinct modes, each designed for where you actually are.
           </p>
         </AnimatedSection>
 

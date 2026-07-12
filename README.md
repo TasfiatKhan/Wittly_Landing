@@ -1,6 +1,6 @@
-# Witly — Landing Page
+# Livadra — Landing Page
 
-Marketing landing page for [Witly](https://github.com/TasfiatKhan/Witly), an AI-powered social intelligence assistant.
+Marketing landing page for [Livadra](https://github.com/TasfiatKhan/Livadra), an AI-powered social intelligence assistant.
 
 ## Stack
 
@@ -43,4 +43,4 @@ Opens at `http://localhost:3000`.
 
 ## Related
 
-Main app: [github.com/TasfiatKhan/Witly](https://github.com/TasfiatKhan/Witly)
+Main app: [github.com/TasfiatKhan/Livadra](https://github.com/TasfiatKhan/Livadra)

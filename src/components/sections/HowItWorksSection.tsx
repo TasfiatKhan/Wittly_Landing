@@ -5,17 +5,17 @@ import AnimatedSection from '@/components/ui/AnimatedSection'
 const steps = [
   {
     number: '01',
-    title: 'Tell Witly what\'s happening',
+    title: 'Tell Livadra what\'s happening',
     description:
       'Describe the situation in your own words — who\'s involved, what the vibe is, what you\'re trying to achieve. The more you share, the more specific and useful the response.',
-    detail: 'Text, voice, or an ongoing thread — Witly meets you where you are.',
+    detail: 'Text, voice, or an ongoing thread — Livadra meets you where you are.',
   },
   {
     number: '02',
     title: 'Get three calibrated options',
     description:
       'Safe, playful, or bold — each with a brief delivery note. Not scripts. Not commands. Just thoughtful options that account for your personality, your relationship, and the moment.',
-    detail: 'Every suggestion is framed collaboratively. Witly never tells you what to say.',
+    detail: 'Every suggestion is framed collaboratively. Livadra never tells you what to say.',
   },
   {
     number: '03',
@@ -31,7 +31,7 @@ export default function HowItWorksSection() {
     <section
       id="how-it-works"
       className="section-padding bg-cream"
-      aria-label="How Witly works"
+      aria-label="How Livadra works"
     >
       <div className="section-container">
         <AnimatedSection className="text-center mb-16">

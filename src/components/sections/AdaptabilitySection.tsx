@@ -21,7 +21,7 @@ const contexts = [
 export default function AdaptabilitySection() {
   return (
     <section style={{ padding: '110px 0' }} aria-label="Built for everywhere">
-      <div className="container-witly">
+      <div className="container-livadra">
         <AnimatedSection style={{ textAlign: 'center', marginBottom: 56 }}>
           <span className="section-eyebrow" style={{ display: 'block', textAlign: 'center' }}>
             Built for everywhere
@@ -33,7 +33,7 @@ export default function AdaptabilitySection() {
             Conversations are human everywhere.
           </h2>
           <p className="section-lead" style={{ margin: '0 auto', textAlign: 'center', maxWidth: 520 }}>
-            Witly adapts naturally across languages, humor styles, and social dynamics —
+            Livadra adapts naturally across languages, humor styles, and social dynamics —
             helping conversations feel more natural in your own voice.
           </p>
         </AnimatedSection>
