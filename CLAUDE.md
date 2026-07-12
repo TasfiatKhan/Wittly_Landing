@@ -235,3 +235,4 @@ Apps live under `apps/` and are registered as `apps.users`, `apps.profiles`, `ap
 - **2026-05-17** — Next.js upgraded to latest version.
 - **2026-05-18** — Skills library: 3 new lead skills (`backend-lead`, `frontend-lead`, `app-lead`) as stack-agnostic decision frameworks with coordination protocols; all 13 existing skills de-Livadra-ified (generic key names, model names, screen names).
 - **2026-05-19** — Navbar mobile fix: removed `display: 'flex'` inline style from nav links `<ul>` that was overriding Tailwind's `hidden md:flex`, causing links to always render on mobile.
+- **2026-07-12** — Product renamed Witly → Livadra across all copy, metadata, package name, theme storage key, and docs (`witly-landing.html` → `livadra-landing.html`); GitHub repo renamed `TasfiatKhan/Witly_Landing` → `TasfiatKhan/Livadra_Landing`; local project directory renamed `witly_landing` → `livadra_landing`.
