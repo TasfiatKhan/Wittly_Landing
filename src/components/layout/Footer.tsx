@@ -24,7 +24,7 @@ export default function Footer() {
                 width: 32, height: 32, background: 'var(--accent)', borderRadius: 8,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontFamily: 'var(--font-serif)', fontWeight: 600, fontSize: 16, color: '#1A1510',
-              }} aria-hidden="true">W</div>
+              }} aria-hidden="true">L</div>
               <span style={{ fontFamily: 'var(--font-serif)', fontSize: 19, fontWeight: 500, color: 'var(--text)' }}>Livadra</span>
             </div>
             <p style={{ fontSize: 13, color: 'var(--text3)', lineHeight: 1.7, maxWidth: 240 }}>

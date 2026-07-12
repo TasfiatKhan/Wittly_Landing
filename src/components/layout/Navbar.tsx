@@ -62,7 +62,7 @@ export default function Navbar() {
               fontWeight: 600, fontSize: 17,
               color: '#1A1510',
               letterSpacing: '-0.5px',
-            }} aria-hidden="true">W</div>
+            }} aria-hidden="true">L</div>
             <span style={{ fontFamily: 'var(--font-serif)', fontSize: 20, fontWeight: 500, color: 'var(--text)', letterSpacing: '-0.3px' }}>
               Livadra
             </span>
