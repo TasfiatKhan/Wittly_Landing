@@ -28,11 +28,11 @@ export const metadata: Metadata = {
     'dating advice', 'social copilot',
   ],
   authors: [{ name: 'Livadra' }],
-  metadataBase: new URL('https://livadra.app'),
+  metadataBase: new URL('https://livadra.com'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://livadra.app',
+    url: 'https://livadra.com',
     siteName: 'Livadra',
     title: 'Livadra — Social Intelligence, Made Natural',
     description: 'A social copilot that helps you feel more comfortable, natural, and confident in every conversation.',
