@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  /* Dark mode: warm cocoa/plum, never pure black */
+  /* Dark mode (default): warm cocoa/plum, never pure black */
   :root {
     --bg:        #2B1B20;
     --bg2:       #33202A;
@@ -28,7 +28,7 @@
     --font-sans:  'DM Sans', system-ui, sans-serif;
   }
 
-  /* Light mode (default): warm ivory, cream, radiant amber */
+  /* Light mode (opt-in via toggle): warm ivory, cream, radiant amber */
   html[data-theme="light"] {
     --bg:        #FDF8F2;
     --bg2:       #FBF0E2;

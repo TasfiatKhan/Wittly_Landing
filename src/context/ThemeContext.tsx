@@ -8,16 +8,16 @@ interface ThemeContextValue {
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
-  isDark: false,
+  isDark: true,
   toggleTheme: () => {},
 })
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(true)
 
   useEffect(() => {
     const stored = localStorage.getItem('livadra-theme')
-    const dark = stored ? stored === 'dark' : false
+    const dark = stored ? stored === 'dark' : true
     // Reading the persisted theme from localStorage is only possible client-side,
     // so this state can't be derived during render — the one-time sync-on-mount
     // effect is the standard hydration-safe pattern here.
