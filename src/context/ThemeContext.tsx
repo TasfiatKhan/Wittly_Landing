@@ -18,6 +18,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const stored = localStorage.getItem('livadra-theme')
     const dark = stored ? stored === 'dark' : false
+    // Reading the persisted theme from localStorage is only possible client-side,
+    // so this state can't be derived during render — the one-time sync-on-mount
+    // effect is the standard hydration-safe pattern here.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsDark(dark)
     document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
   }, [])

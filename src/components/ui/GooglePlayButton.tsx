@@ -1,5 +1,3 @@
-'use client'
-
 import { PLAY_STORE_URL } from '@/config/links'
 
 interface GooglePlayButtonProps {
@@ -38,7 +36,7 @@ export default function GooglePlayButton({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${label} — opens Google Play in a new tab`}
-      className={className}
+      className={`gp-btn ${isSolid ? 'gp-btn-solid' : 'gp-btn-outline'} ${className ?? ''}`}
       style={{
         display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: s.gap,
         background: isSolid ? 'var(--accent)' : 'transparent',
@@ -46,30 +44,7 @@ export default function GooglePlayButton({
         border: isSolid ? 'none' : '1px solid var(--border)',
         fontSize: s.fontSize, fontWeight: 500, padding: s.padding, borderRadius: 100,
         boxShadow: isSolid ? '0 4px 24px rgba(224,137,61,0.25)' : 'none',
-        transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s, border-color 0.2s, color 0.2s',
         whiteSpace: 'nowrap',
-      }}
-      onMouseEnter={e => {
-        const el = e.currentTarget
-        el.style.transform = 'translateY(-2px)'
-        if (isSolid) {
-          el.style.background = 'var(--accent2)'
-          el.style.boxShadow = '0 8px 32px rgba(224,137,61,0.35)'
-        } else {
-          el.style.borderColor = 'rgba(224,137,61,0.4)'
-          el.style.color = 'var(--accent2)'
-        }
-      }}
-      onMouseLeave={e => {
-        const el = e.currentTarget
-        el.style.transform = 'translateY(0)'
-        if (isSolid) {
-          el.style.background = 'var(--accent)'
-          el.style.boxShadow = '0 4px 24px rgba(224,137,61,0.25)'
-        } else {
-          el.style.borderColor = 'var(--border)'
-          el.style.color = 'var(--accent)'
-        }
       }}
     >
       <PlayGlyph size={s.iconSize} color={isSolid ? '#2A1710' : 'var(--accent)'} />

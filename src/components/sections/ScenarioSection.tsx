@@ -66,6 +66,7 @@ export default function ScenarioSection() {
                     tabIndex={0}
                     onClick={() => setActive(i)}
                     onKeyDown={(e) => e.key === 'Enter' && setActive(i)}
+                    className="scenario-tab"
                     style={{
                       padding: '18px 22px',
                       borderRadius: 'var(--radius)',
@@ -73,18 +74,6 @@ export default function ScenarioSection() {
                       background: i === active ? 'var(--surface)' : 'transparent',
                       cursor: 'pointer',
                       transition: 'all 0.25s',
-                    }}
-                    onMouseEnter={e => {
-                      if (i !== active) {
-                        e.currentTarget.style.background = 'var(--surface)'
-                        e.currentTarget.style.borderColor = 'var(--border)'
-                      }
-                    }}
-                    onMouseLeave={e => {
-                      if (i !== active) {
-                        e.currentTarget.style.background = 'transparent'
-                        e.currentTarget.style.borderColor = 'transparent'
-                      }
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
@@ -126,14 +115,11 @@ export default function ScenarioSection() {
               {/* Options */}
               <div aria-label="Suggested responses" style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {scenarios[active].options.map((opt, i) => (
-                  <div key={i} style={{
+                  <div key={i} className="scenario-option" style={{
                     display: 'flex', gap: 10,
                     background: 'var(--bg3)', borderRadius: 10, padding: '11px 13px',
-                    cursor: 'pointer', transition: 'background 0.2s',
-                  }}
-                    onMouseEnter={e => (e.currentTarget.style.background = 'rgba(224,137,61,0.06)')}
-                    onMouseLeave={e => (e.currentTarget.style.background = 'var(--bg3)')}
-                  >
+                    cursor: 'pointer',
+                  }}>
                     <span aria-hidden="true" style={{ width: 8, height: 8, borderRadius: '50%', background: opt.color, flexShrink: 0, marginTop: 4 }} />
                     <div>
                       <div style={{ fontSize: 13, color: 'var(--text)', lineHeight: 1.5 }}>{opt.text}</div>

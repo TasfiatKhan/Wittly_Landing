@@ -36,13 +36,11 @@ export const metadata: Metadata = {
     siteName: 'Livadra',
     title: 'Livadra — Social Intelligence, Made Natural',
     description: 'Now available on Google Play. Livadra helps you feel more comfortable, natural, and confident in every conversation.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Livadra' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Livadra — Social Intelligence, Made Natural',
     description: 'Now available on Google Play. Livadra helps you feel more comfortable, natural, and confident in every conversation.',
-    images: ['/og-image.png'],
   },
   robots: { index: true, follow: true },
 }

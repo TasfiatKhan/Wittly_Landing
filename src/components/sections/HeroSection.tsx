@@ -83,16 +83,12 @@ export default function HeroSection() {
             {/* Actions */}
             <motion.div variants={stagger.item} style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 60 }}>
               <GooglePlayButton variant="solid" size="lg" />
-              <a href="#modes" style={{
+              <a href="#modes" className="ghost-link" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                background: 'transparent', color: 'var(--text2)',
+                background: 'transparent',
                 fontSize: 15, fontWeight: 400, padding: '14px 24px', borderRadius: 100,
                 border: '1px solid var(--border)',
-                transition: 'color 0.2s, border-color 0.2s, transform 0.2s',
-              }}
-                onMouseEnter={e => { const el = e.currentTarget; el.style.color = 'var(--text)'; el.style.borderColor = 'rgba(224,137,61,0.3)'; el.style.transform = 'translateY(-1px)' }}
-                onMouseLeave={e => { const el = e.currentTarget; el.style.color = 'var(--text2)'; el.style.borderColor = 'var(--border)'; el.style.transform = 'translateY(0)' }}
-              >
+              }}>
                 <span>See how it works</span>
               </a>
             </motion.div>

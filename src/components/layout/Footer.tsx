@@ -1,5 +1,3 @@
-'use client'
-
 import { PLAY_STORE_URL } from '@/config/links'
 
 export default function Footer() {
@@ -44,9 +42,8 @@ export default function Footer() {
                     href={i === 3 ? PLAY_STORE_URL : '#modes'}
                     target={i === 3 ? '_blank' : undefined}
                     rel={i === 3 ? 'noopener noreferrer' : undefined}
-                    style={{ fontSize: 14, color: 'var(--text2)', transition: 'color 0.2s' }}
-                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
-                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--text2)')}
+                    className="footer-link"
+                    style={{ fontSize: 14 }}
                   >{label}</a>
                 </li>
               ))}
@@ -59,10 +56,7 @@ export default function Footer() {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {companyLinks.map((label) => (
                 <li key={label}>
-                  <a href="#" style={{ fontSize: 14, color: 'var(--text2)', transition: 'color 0.2s' }}
-                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
-                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--text2)')}
-                  >{label}</a>
+                  <a href="#" className="footer-link" style={{ fontSize: 14 }}>{label}</a>
                 </li>
               ))}
             </ul>
@@ -74,10 +68,7 @@ export default function Footer() {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {legalLinks.map((label) => (
                 <li key={label}>
-                  <a href="#" style={{ fontSize: 14, color: 'var(--text2)', transition: 'color 0.2s' }}
-                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
-                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--text2)')}
-                  >{label}</a>
+                  <a href="#" className="footer-link" style={{ fontSize: 14 }}>{label}</a>
                 </li>
               ))}
             </ul>

@@ -1,5 +1,3 @@
-'use client'
-
 import AnimatedSection from '@/components/ui/AnimatedSection'
 
 const problems = [
@@ -47,16 +45,12 @@ export default function ProblemSection() {
             <ul aria-label="Situations Livadra helps with" style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 16 }}>
               {problems.map((p, i) => (
                 <AnimatedSection key={p.title} delay={0.1 * (i + 1)}>
-                  <li style={{
+                  <li className="problem-card" style={{
                     display: 'flex', alignItems: 'flex-start', gap: 14,
                     padding: '18px 20px',
                     background: 'var(--surface)', border: '1px solid var(--border)',
                     borderRadius: 'var(--radius)',
-                    transition: 'border-color 0.2s',
-                  }}
-                    onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(224,137,61,0.25)')}
-                    onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--border)')}
-                  >
+                  }}>
                     <span aria-hidden="true" style={{ fontSize: 22, flexShrink: 0, marginTop: 1 }}>{p.icon}</span>
                     <div>
                       <h4 style={{ fontSize: 15, fontWeight: 500, color: 'var(--text)', marginBottom: 3 }}>{p.title}</h4>

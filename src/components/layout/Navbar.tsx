@@ -77,10 +77,7 @@ export default function Navbar() {
               { label: 'Stories', href: '#stories' },
             ].map((link) => (
               <li key={link.href}>
-                <a href={link.href} style={{ fontSize: 14, color: 'var(--text2)', fontWeight: 400, transition: 'color 0.2s' }}
-                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-                  onMouseLeave={e => (e.currentTarget.style.color = 'var(--text2)')}
-                >
+                <a href={link.href} className="nav-link" style={{ fontSize: 14, fontWeight: 400 }}>
                   {link.label}
                 </a>
               </li>
@@ -91,18 +88,15 @@ export default function Navbar() {
           <button
             onClick={toggleTheme}
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            className="icon-toggle"
             style={{
               width: 36, height: 36, borderRadius: '50%',
               border: '1px solid var(--border)',
               background: 'var(--surface)',
               cursor: 'pointer',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              color: 'var(--text2)',
-              transition: 'background 0.2s, border-color 0.2s, color 0.2s',
               flexShrink: 0,
             }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(224,137,61,0.35)'; e.currentTarget.style.color = 'var(--accent)' }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text2)' }}
           >
             {isDark ? <SunIcon /> : <MoonIcon />}
           </button>

@@ -134,16 +134,6 @@
     margin: 0 24px;
   }
 
-  .reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.72s cubic-bezier(.22,1,.36,1), transform 0.72s cubic-bezier(.22,1,.36,1);
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
-  }
-
   /* Signature: radiant warm gradient — amber to coral to rose. Used sparingly on emphasis words and glows. */
   .text-radiant {
     background: linear-gradient(100deg, var(--accent) 0%, var(--bold) 55%, var(--playful) 100%);
@@ -151,4 +141,31 @@
     background-clip: text;
     color: transparent;
   }
+
+  /* Shared hover treatments — replaces one-off onMouseEnter/onMouseLeave handlers */
+  .nav-link { color: var(--text2); transition: color 0.2s; }
+  .nav-link:hover { color: var(--text); }
+
+  .footer-link { color: var(--text2); transition: color 0.2s; }
+  .footer-link:hover { color: var(--accent); }
+
+  .icon-toggle { color: var(--text2); transition: background 0.2s, border-color 0.2s, color 0.2s; }
+  .icon-toggle:hover { border-color: rgba(224,137,61,0.35); color: var(--accent); }
+
+  .problem-card { transition: border-color 0.2s; }
+  .problem-card:hover { border-color: rgba(224,137,61,0.25); }
+
+  .ghost-link { color: var(--text2); transition: color 0.2s, border-color 0.2s, transform 0.2s; }
+  .ghost-link:hover { color: var(--text); border-color: rgba(224,137,61,0.3); transform: translateY(-1px); }
+
+  .scenario-tab:hover { background: var(--surface); border-color: var(--border); }
+  .scenario-tab[aria-selected="true"]:hover { background: var(--surface); border-color: rgba(224,137,61,0.25); }
+
+  .scenario-option { transition: background 0.2s; }
+  .scenario-option:hover { background: rgba(224,137,61,0.06); }
+
+  .gp-btn { transition: background 0.2s, transform 0.2s, box-shadow 0.2s, border-color 0.2s, color 0.2s; }
+  .gp-btn:hover { transform: translateY(-2px); }
+  .gp-btn-solid:hover { background: var(--accent2); box-shadow: 0 8px 32px rgba(224,137,61,0.35); }
+  .gp-btn-outline:hover { border-color: rgba(224,137,61,0.4); color: var(--accent2); }
 }
