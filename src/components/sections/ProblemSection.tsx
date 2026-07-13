@@ -54,7 +54,7 @@ export default function ProblemSection() {
                     borderRadius: 'var(--radius)',
                     transition: 'border-color 0.2s',
                   }}
-                    onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(196,149,106,0.25)')}
+                    onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(224,137,61,0.25)')}
                     onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--border)')}
                   >
                     <span aria-hidden="true" style={{ fontSize: 22, flexShrink: 0, marginTop: 1 }}>{p.icon}</span>
@@ -73,7 +73,7 @@ export default function ProblemSection() {
             <div style={{
               background: 'var(--surface)', border: '1px solid var(--border)',
               borderRadius: 'var(--radius-lg)', padding: 28, width: 320,
-              boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
+              boxShadow: '0 20px 60px rgba(43,27,32,0.30)',
             }}>
               <div style={{ fontSize: 12, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 20 }}>
                 The spiral — before Livadra

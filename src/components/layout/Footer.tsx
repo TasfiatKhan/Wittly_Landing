@@ -1,9 +1,11 @@
 'use client'
 
+import { PLAY_STORE_URL } from '@/config/links'
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
-  const productLinks = ['Texting Mode', 'Live Mode', 'Moments', 'Early Access']
+  const productLinks = ['Texting Mode', 'Live Mode', 'Moments', 'Download']
   const companyLinks = ['About', 'Blog', 'Careers', 'Press']
   const legalLinks = ['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Contact']
 
@@ -23,7 +25,7 @@ export default function Footer() {
               <div style={{
                 width: 32, height: 32, background: 'var(--accent)', borderRadius: 8,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontFamily: 'var(--font-serif)', fontWeight: 600, fontSize: 16, color: '#1A1510',
+                fontFamily: 'var(--font-serif)', fontWeight: 600, fontSize: 16, color: '#2A1710',
               }} aria-hidden="true">L</div>
               <span style={{ fontFamily: 'var(--font-serif)', fontSize: 19, fontWeight: 500, color: 'var(--text)' }}>Livadra</span>
             </div>
@@ -38,7 +40,11 @@ export default function Footer() {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {productLinks.map((label, i) => (
                 <li key={label}>
-                  <a href={i === 3 ? '#waitlist' : '#modes'} style={{ fontSize: 14, color: 'var(--text2)', transition: 'color 0.2s' }}
+                  <a
+                    href={i === 3 ? PLAY_STORE_URL : '#modes'}
+                    target={i === 3 ? '_blank' : undefined}
+                    rel={i === 3 ? 'noopener noreferrer' : undefined}
+                    style={{ fontSize: 14, color: 'var(--text2)', transition: 'color 0.2s' }}
                     onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
                     onMouseLeave={e => (e.currentTarget.style.color = 'var(--text2)')}
                   >{label}</a>

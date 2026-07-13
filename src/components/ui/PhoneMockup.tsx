@@ -15,7 +15,7 @@ export default function PhoneMockup() {
         background: 'var(--surface)',
         borderRadius: 40,
         border: '1px solid var(--border)',
-        boxShadow: '0 0 0 6px rgba(255,255,255,0.02), 0 28px 56px rgba(0,0,0,0.36), 0 8px 24px rgba(196,149,106,0.09)',
+        boxShadow: '0 0 0 6px rgba(255,255,255,0.02), 0 28px 56px rgba(43,27,32,0.26), 0 8px 24px rgba(224,137,61,0.09)',
         overflow: 'hidden',
       }}
     >
@@ -31,7 +31,7 @@ export default function PhoneMockup() {
       <div style={{ padding: '0 16px 24px', minHeight: 520, background: 'var(--bg2)' }}>
         {/* Header */}
         <div style={{ padding: '14px 0 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span style={{ fontSize: 11, fontWeight: 500, color: 'var(--accent)', background: 'rgba(196,149,106,0.12)', padding: '4px 10px', borderRadius: 100, letterSpacing: '0.05em' }}>
+          <span style={{ fontSize: 11, fontWeight: 500, color: 'var(--accent)', background: 'rgba(224,137,61,0.12)', padding: '4px 10px', borderRadius: 100, letterSpacing: '0.05em' }}>
             Texting Mode
           </span>
           <span style={{ fontSize: 11, color: 'var(--text3)' }}>Now</span>
@@ -47,7 +47,7 @@ export default function PhoneMockup() {
 
         {/* Chat: me */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginBottom: 10 }}>
-          <div style={{ maxWidth: '85%', padding: '10px 14px', borderRadius: '18px 18px 4px 18px', fontSize: 13, lineHeight: 1.5, background: 'var(--accent)', color: '#1A1510', fontWeight: 500 }}>
+          <div style={{ maxWidth: '85%', padding: '10px 14px', borderRadius: '18px 18px 4px 18px', fontSize: 13, lineHeight: 1.5, background: 'var(--accent)', color: '#2A1710', fontWeight: 500 }}>
             might be down — who else is going?
           </div>
           <span style={{ fontSize: 10, color: 'var(--text3)', marginTop: 3, paddingRight: 4 }}>You</span>

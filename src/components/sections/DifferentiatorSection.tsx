@@ -45,7 +45,7 @@ export default function DifferentiatorSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -4, borderColor: 'rgba(196,149,106,0.2)', transition: { duration: 0.2 } }}
+              whileHover={{ y: -4, borderColor: 'rgba(224,137,61,0.2)', transition: { duration: 0.2 } }}
               style={{
                 padding: '28px 24px',
                 background: 'var(--surface)', border: '1px solid var(--border)',

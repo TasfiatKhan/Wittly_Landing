@@ -10,27 +10,27 @@ const config: Config = {
     extend: {
       colors: {
         bg: {
-          DEFAULT: '#0F0E0C',
-          2: '#151410',
-          3: '#1C1A16',
+          DEFAULT: '#2B1B20',
+          2: '#33202A',
+          3: '#3D2530',
         },
         surface: {
-          DEFAULT: '#232018',
-          2: '#2B2720',
+          DEFAULT: '#3A232A',
+          2: '#452A33',
         },
         accent: {
-          DEFAULT: '#C4956A',
-          2: '#D4A574',
+          DEFAULT: '#E0893D',
+          2: '#EDA968',
         },
         gold: '#E8C97A',
         ink: {
-          DEFAULT: '#F0EBE3',
-          muted: '#B8AFA4',
-          faint: '#7A7168',
+          DEFAULT: '#FBF1E6',
+          muted: '#D8C4B2',
+          faint: '#A98F79',
         },
         safe: '#5A8F6B',
-        playful: '#7B6FA8',
-        assertive: '#B85C4A',
+        playful: '#DE9AAE',
+        assertive: '#E2604A',
       },
       fontFamily: {
         serif: ['var(--font-lora)', 'Georgia', 'serif'],

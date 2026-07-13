@@ -5,11 +5,12 @@ import TickerSection from '@/components/sections/TickerSection'
 import ProblemSection from '@/components/sections/ProblemSection'
 import MissionSection from '@/components/sections/MissionSection'
 import ModesSection from '@/components/sections/ModesSection'
+import MidCtaSection from '@/components/sections/MidCtaSection'
 import AdaptabilitySection from '@/components/sections/AdaptabilitySection'
 import ScenarioSection from '@/components/sections/ScenarioSection'
 import DifferentiatorSection from '@/components/sections/DifferentiatorSection'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
-import WaitlistSection from '@/components/sections/WaitlistSection'
+import DownloadSection from '@/components/sections/DownloadSection'
 
 function Divider() {
   return <div className="section-divider" aria-hidden="true" />
@@ -26,6 +27,7 @@ export default function Home() {
       <MissionSection />
       <Divider />
       <ModesSection />
+      <MidCtaSection />
       <Divider />
       <AdaptabilitySection />
       <Divider />
@@ -34,7 +36,7 @@ export default function Home() {
       <DifferentiatorSection />
       <Divider />
       <TestimonialsSection />
-      <WaitlistSection />
+      <DownloadSection />
       <Footer />
     </main>
   )

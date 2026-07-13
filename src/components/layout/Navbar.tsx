@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useTheme } from '@/context/ThemeContext'
+import GooglePlayButton from '@/components/ui/GooglePlayButton'
 
 function SunIcon() {
   return (
@@ -44,7 +45,7 @@ export default function Navbar() {
         zIndex: 100,
         padding: '20px 0',
         transition: 'background 0.4s, backdrop-filter 0.4s, border-color 0.4s',
-        background: scrolled ? (isDark ? 'rgba(18,17,16,0.88)' : 'rgba(253,250,247,0.92)') : 'transparent',
+        background: scrolled ? (isDark ? 'rgba(43,27,32,0.88)' : 'rgba(253,248,242,0.92)') : 'transparent',
         backdropFilter: scrolled ? 'blur(18px)' : 'none',
         borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
       }}
@@ -60,7 +61,7 @@ export default function Navbar() {
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontFamily: 'var(--font-serif)',
               fontWeight: 600, fontSize: 17,
-              color: '#1A1510',
+              color: '#2A1710',
               letterSpacing: '-0.5px',
             }} aria-hidden="true">L</div>
             <span style={{ fontFamily: 'var(--font-serif)', fontSize: 20, fontWeight: 500, color: 'var(--text)', letterSpacing: '-0.3px' }}>
@@ -74,7 +75,6 @@ export default function Navbar() {
               { label: 'How it works', href: '#how-it-works' },
               { label: 'Modes', href: '#modes' },
               { label: 'Stories', href: '#stories' },
-              { label: 'Early Access', href: '#waitlist' },
             ].map((link) => (
               <li key={link.href}>
                 <a href={link.href} style={{ fontSize: 14, color: 'var(--text2)', fontWeight: 400, transition: 'color 0.2s' }}
@@ -101,34 +101,17 @@ export default function Navbar() {
               transition: 'background 0.2s, border-color 0.2s, color 0.2s',
               flexShrink: 0,
             }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(196,149,106,0.35)'; e.currentTarget.style.color = 'var(--accent)' }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(224,137,61,0.35)'; e.currentTarget.style.color = 'var(--accent)' }}
             onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text2)' }}
           >
             {isDark ? <SunIcon /> : <MoonIcon />}
           </button>
 
           {/* Desktop CTA */}
-          <a href="#waitlist" className="hidden md:block" style={{
-            background: 'var(--accent)', color: '#1A1510',
-            fontSize: 14, fontWeight: 500,
-            padding: '9px 22px', borderRadius: 100,
-            transition: 'background 0.2s, transform 0.2s',
-          }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent2)'; e.currentTarget.style.transform = 'translateY(-1px)' }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.transform = 'translateY(0)' }}
-          >
-            Get Early Access
-          </a>
+          <GooglePlayButton variant="solid" size="sm" label="Get it on Google Play" className="hidden md:inline-flex" />
 
           {/* Mobile CTA */}
-          <a href="#waitlist" className="md:hidden" style={{
-            background: 'var(--surface)', color: 'var(--accent)',
-            border: '1px solid var(--border)',
-            fontSize: 13, fontWeight: 500,
-            padding: '8px 18px', borderRadius: 100,
-          }}>
-            Join waitlist
-          </a>
+          <GooglePlayButton variant="outline" size="sm" label="Google Play" className="md:hidden" />
         </div>
       </div>
     </motion.nav>

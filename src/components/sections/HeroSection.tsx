@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import PhoneMockup from '@/components/ui/PhoneMockup'
+import GooglePlayButton from '@/components/ui/GooglePlayButton'
 
 const stagger = {
   container: { hidden: {}, show: { transition: { staggerChildren: 0.11 } } },
@@ -27,13 +28,13 @@ export default function HeroSection() {
       <div aria-hidden="true" style={{
         position: 'absolute', top: -200, left: '50%', transform: 'translateX(-50%)',
         width: 900, height: 600,
-        background: 'radial-gradient(ellipse at center, rgba(196,149,106,0.11) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse at center, rgba(224,137,61,0.11) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
       <div aria-hidden="true" style={{
         position: 'absolute', bottom: -100, right: -200,
         width: 500, height: 400,
-        background: 'radial-gradient(ellipse at center, rgba(196,149,106,0.04) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse at center, rgba(224,137,61,0.04) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
@@ -51,15 +52,15 @@ export default function HeroSection() {
               <span style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 fontSize: 12, fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: 'var(--accent)', background: 'rgba(196,149,106,0.10)',
-                border: '1px solid rgba(196,149,106,0.2)', padding: '6px 14px', borderRadius: 100,
+                color: 'var(--accent)', background: 'rgba(224,137,61,0.10)',
+                border: '1px solid rgba(224,137,61,0.2)', padding: '6px 14px', borderRadius: 100,
                 marginBottom: 28,
               }}>
                 <span className="animate-pulse-dot" aria-hidden="true" style={{
                   width: 6, height: 6, background: 'var(--accent)', borderRadius: '50%',
                   animation: 'pulse-dot 2s ease-in-out infinite',
                 }} />
-                Now in Early Access
+                Now available on Google Play
               </span>
             </motion.div>
 
@@ -71,31 +72,17 @@ export default function HeroSection() {
               color: 'var(--text)', marginBottom: 24,
             }}>
               Never run out of things<br />
-              to <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>say</em> again.
+              to <em className="text-radiant" style={{ fontStyle: 'italic' }}>say</em> again.
             </motion.h1>
 
             {/* Subhead */}
             <motion.p variants={stagger.item} style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--text2)', marginBottom: 44, maxWidth: 480, fontWeight: 300 }}>
-              Livadra is your social copilot — helping you navigate conversations with more ease, warmth, and confidence. Texting, in-person, ongoing. Whatever the moment calls for.
+              Livadra helps you find the right words in the moment — texting, live conversations, and the ones that keep unfolding. Warm, confident, and unmistakably you.
             </motion.p>
 
             {/* Actions */}
             <motion.div variants={stagger.item} style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 60 }}>
-              <a href="#waitlist" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                background: 'var(--accent)', color: '#1A1510',
-                fontSize: 15, fontWeight: 500, padding: '14px 28px', borderRadius: 100,
-                boxShadow: '0 4px 24px rgba(196,149,106,0.2)',
-                transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
-              }}
-                onMouseEnter={e => { const el = e.currentTarget; el.style.background = 'var(--accent2)'; el.style.transform = 'translateY(-2px)'; el.style.boxShadow = '0 8px 32px rgba(196,149,106,0.3)' }}
-                onMouseLeave={e => { const el = e.currentTarget; el.style.background = 'var(--accent)'; el.style.transform = 'translateY(0)'; el.style.boxShadow = '0 4px 24px rgba(196,149,106,0.2)' }}
-              >
-                <span>Get Early Access</span>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </a>
+              <GooglePlayButton variant="solid" size="lg" />
               <a href="#modes" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 background: 'transparent', color: 'var(--text2)',
@@ -103,7 +90,7 @@ export default function HeroSection() {
                 border: '1px solid var(--border)',
                 transition: 'color 0.2s, border-color 0.2s, transform 0.2s',
               }}
-                onMouseEnter={e => { const el = e.currentTarget; el.style.color = 'var(--text)'; el.style.borderColor = 'rgba(196,149,106,0.3)'; el.style.transform = 'translateY(-1px)' }}
+                onMouseEnter={e => { const el = e.currentTarget; el.style.color = 'var(--text)'; el.style.borderColor = 'rgba(224,137,61,0.3)'; el.style.transform = 'translateY(-1px)' }}
                 onMouseLeave={e => { const el = e.currentTarget; el.style.color = 'var(--text2)'; el.style.borderColor = 'var(--border)'; el.style.transform = 'translateY(0)' }}
               >
                 <span>See how it works</span>
@@ -143,7 +130,7 @@ export default function HeroSection() {
                   position: 'absolute', left: -80, top: '30%',
                   background: 'var(--surface)', border: '1px solid var(--border)',
                   borderRadius: 12, padding: '10px 14px', fontSize: 12,
-                  boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+                  boxShadow: '0 8px 24px rgba(43,27,32,0.30)',
                 }}
               >
                 <div style={{ fontSize: 16, marginBottom: 2 }}>💬</div>
@@ -161,7 +148,7 @@ export default function HeroSection() {
                   position: 'absolute', right: -70, top: '55%',
                   background: 'var(--surface)', border: '1px solid var(--border)',
                   borderRadius: 12, padding: '10px 14px', fontSize: 12,
-                  boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+                  boxShadow: '0 8px 24px rgba(43,27,32,0.30)',
                 }}
               >
                 <div style={{ fontSize: 16, marginBottom: 2 }}>✓</div>

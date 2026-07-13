@@ -69,7 +69,7 @@ export default function ScenarioSection() {
                     style={{
                       padding: '18px 22px',
                       borderRadius: 'var(--radius)',
-                      border: `1px solid ${i === active ? 'rgba(196,149,106,0.25)' : 'transparent'}`,
+                      border: `1px solid ${i === active ? 'rgba(224,137,61,0.25)' : 'transparent'}`,
                       background: i === active ? 'var(--surface)' : 'transparent',
                       cursor: 'pointer',
                       transition: 'all 0.25s',
@@ -106,7 +106,7 @@ export default function ScenarioSection() {
               style={{
                 background: 'var(--surface)', border: '1px solid var(--border)',
                 borderRadius: 28, padding: '24px 20px',
-                boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
+                boxShadow: '0 20px 60px rgba(43,27,32,0.30)',
               }}
             >
               <div style={{ fontSize: 11, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 16, paddingBottom: 12, borderBottom: '1px solid var(--border)' }}>
@@ -131,7 +131,7 @@ export default function ScenarioSection() {
                     background: 'var(--bg3)', borderRadius: 10, padding: '11px 13px',
                     cursor: 'pointer', transition: 'background 0.2s',
                   }}
-                    onMouseEnter={e => (e.currentTarget.style.background = 'rgba(196,149,106,0.06)')}
+                    onMouseEnter={e => (e.currentTarget.style.background = 'rgba(224,137,61,0.06)')}
                     onMouseLeave={e => (e.currentTarget.style.background = 'var(--bg3)')}
                   >
                     <span aria-hidden="true" style={{ width: 8, height: 8, borderRadius: '50%', background: opt.color, flexShrink: 0, marginTop: 4 }} />

@@ -3,22 +3,23 @@
 @tailwind utilities;
 
 @layer base {
+  /* Dark mode: warm cocoa/plum, never pure black */
   :root {
-    --bg:        #121110;
-    --bg2:       #181614;
-    --bg3:       #1F1D19;
-    --surface:   #262320;
-    --surface2:  #2F2C28;
-    --border:    rgba(196,149,106,0.14);
-    --accent:    #C4956A;
-    --accent2:   #D4A574;
+    --bg:        #2B1B20;
+    --bg2:       #33202A;
+    --bg3:       #3D2530;
+    --surface:   #3A232A;
+    --surface2:  #452A33;
+    --border:    rgba(224,137,61,0.16);
+    --accent:    #E0893D;
+    --accent2:   #EDA968;
     --gold:      #E8C97A;
-    --text:      #EDE8E1;
-    --text2:     #B2AAA1;
-    --text3:     #7C7469;
+    --text:      #FBF1E6;
+    --text2:     #D8C4B2;
+    --text3:     #A98F79;
     --safe:      #5A8F6B;
-    --playful:   #7B6FA8;
-    --bold:      #B85C4A;
+    --playful:   #DE9AAE;
+    --bold:      #E2604A;
     --radius-sm: 10px;
     --radius:    16px;
     --radius-lg: 24px;
@@ -27,22 +28,23 @@
     --font-sans:  'DM Sans', system-ui, sans-serif;
   }
 
+  /* Light mode (default): warm ivory, cream, radiant amber */
   html[data-theme="light"] {
-    --bg:        #FDFAF7;
-    --bg2:       #F7F3EE;
-    --bg3:       #EFE9E1;
+    --bg:        #FDF8F2;
+    --bg2:       #FBF0E2;
+    --bg3:       #F7E9D6;
     --surface:   #FFFFFF;
-    --surface2:  #F2EDE6;
-    --border:    rgba(139,100,65,0.18);
-    --accent:    #C4956A;
-    --accent2:   #D4A574;
+    --surface2:  #FFF3E4;
+    --border:    rgba(184,86,59,0.16);
+    --accent:    #E0893D;
+    --accent2:   #EDA968;
     --gold:      #C4A040;
-    --text:      #1C1610;
-    --text2:     #5C4E41;
-    --text3:     #9A8070;
+    --text:      #2E1D12;
+    --text2:     #6B5644;
+    --text3:     #9C8570;
     --safe:      #3A7050;
-    --playful:   #5B4E9A;
-    --bold:      #9A3828;
+    --playful:   #A8506B;
+    --bold:      #C94430;
   }
 
   html {
@@ -76,7 +78,7 @@
   }
 
   ::selection {
-    background-color: rgba(196, 149, 106, 0.2);
+    background-color: rgba(224, 137, 61, 0.22);
     color: var(--text);
   }
 
@@ -140,5 +142,13 @@
   .reveal.visible {
     opacity: 1;
     transform: none;
+  }
+
+  /* Signature: radiant warm gradient — amber to coral to rose. Used sparingly on emphasis words and glows. */
+  .text-radiant {
+    background: linear-gradient(100deg, var(--accent) 0%, var(--bold) 55%, var(--playful) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 }
